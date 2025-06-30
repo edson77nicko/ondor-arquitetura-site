@@ -119,10 +119,10 @@ const Services = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <div className="inline-flex flex-col sm:flex-row gap-4">
-            <a href="/servicos" className="bg-gradient-to-r from-ondor-primary to-ondor-accent text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-102">
+            <a href="/servicos" className="bg-gradient-to-r from-ondor-primary to-ondor-accent text-white px-8 py-2 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-102">
               Ver Todos os Serviços
             </a>
-            <a href="/contato" className="border-2 border-ondor-primary text-ondor-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-ondor-primary/90 hover:border-ondor-primary/90 hover:text-white transition-all duration-300">
+            <a href="/contato" className="border-2 border-ondor-primary text-ondor-primary px-8 py-2 rounded-xl font-semibold text-lg hover:bg-ondor-primary/90 hover:border-ondor-primary/90 hover:text-white transition-all duration-300">
               Solicitar Orçamento
             </a>
           </div>

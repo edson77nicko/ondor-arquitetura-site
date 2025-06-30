@@ -133,7 +133,7 @@ const Contato = () => {
                   
                   <button
                     type="submit"
-                    className="w-full bg-ondor-primary text-white py-4 rounded-lg font-semibold text-lg hover:bg-ondor-primary/90 transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-ondor-primary text-white py-2 rounded-lg font-semibold text-lg hover:bg-ondor-primary/90 transition-all duration-300 transform hover:scale-105"
                   >
                     Enviar Solicitação
                   </button>

@@ -15,16 +15,6 @@ const About = () => {
       icon: Award,
       title: "Experiência Consolidada",
       description: "Mais de 40 anos no mercado de arquitetura"
-    },
-    {
-      icon: MapPin,
-      title: "Sede Própria",
-      description: "Localizada estrategicamente em Cotia (SP)"
-    },
-    {
-      icon: TrendingUp,
-      title: "Visão Estratégica",
-      description: "Unindo técnica, legalidade e viabilidade comercial"
     }
   ];
 
@@ -48,6 +38,7 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Sobre a ONDOR</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               A ONDOR nasceu da união entre <strong className="text-gray-900 font-semibold">experiência, valores familiares</strong> e 
               <strong className="text-gray-900 font-semibold"> visão estratégica</strong>. Com <strong className="text-gray-900 font-semibold">sede própria em Cotia (SP)</strong>, 
@@ -58,9 +49,8 @@ const About = () => {
               <strong className="text-gray-900 font-semibold"> Leno e Leide</strong>, unimos <strong className="text-gray-900 font-semibold">técnica, legalidade e viabilidade comercial</strong> com 
               o que há de mais <strong className="text-gray-900 font-semibold">humano</strong> em cada projeto.
             </p>
-
             {/* Icon List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
               {highlights.map((item, index) => (
                 <div
                   key={index}
@@ -86,6 +76,7 @@ const About = () => {
                 </div>
               ))}
             </div>
+            <a href="/sobre" className="inline-block border-2 border-ondor-primary text-ondor-primary px-8 py-3 rounded-xl font-semibold text-lg hover:bg-ondor-primary hover:text-white transition-all duration-300 text-center">Saiba mais sobre a ONDOR</a>
           </div>
           
           <div className="animate-fade-in-up relative" style={{ animationDelay: '0.2s' }}>
@@ -103,6 +94,10 @@ const About = () => {
                 </div>
               </div>
             </div>
+            
+            {/* Elemento decorativo */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-ondor-accent to-ondor-primary rounded-full opacity-10"></div>
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-ondor-primary to-ondor-background rounded-full opacity-10"></div>
           </div>
         </div>
       </div>

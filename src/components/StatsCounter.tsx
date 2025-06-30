@@ -74,7 +74,7 @@ const StatsCounter = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 bg-black">
+    <section ref={sectionRef} className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
@@ -91,15 +91,15 @@ const StatsCounter = () => {
               }}
             >
               <div className="relative">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2 relative shadow-lg">
+                <div className="text-4xl md:text-5xl font-bold text-ondor-primary mb-2 relative">
                   {formatDisplayValue(counts[index], stat.value)}
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-white/80 to-ondor-special/80 rounded-full"></div>
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-gradient-to-r from-ondor-primary/80 to-ondor-accent/80 rounded-full"></div>
                 </div>
-                <div className="text-white font-medium text-sm md:text-base opacity-90">
+                <div className="text-ondor-primary font-medium text-sm md:text-base opacity-90">
                   {stat.label}
                 </div>
                 {index < stats.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 right-0 h-12 w-px bg-white/20 -translate-y-1/2" />
+                  <div className="hidden md:block absolute top-1/2 right-0 h-12 w-px bg-ondor-primary/20 -translate-y-1/2" />
                 )}
               </div>
             </div>

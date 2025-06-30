@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 const Hero = () => {
@@ -22,13 +21,13 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <Link
               to="/contato"
-              className="bg-white text-ondor-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center"
+              className="bg-white text-ondor-primary px-8 py-2 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-center"
             >
               Solicite uma Consulta Estratégica
             </Link>
             <Link
               to="/servicos"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-ondor-primary transition-all duration-300 text-center"
+              className="border-2 border-white text-white px-8 py-2 rounded-lg font-semibold text-lg hover:bg-white hover:text-ondor-primary transition-all duration-300 text-center"
             >
               Conheça Nossos Projetos
             </Link>

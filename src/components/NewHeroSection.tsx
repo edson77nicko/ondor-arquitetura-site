@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Building, Home, FileText } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import useEmblaCarousel from 'embla-carousel-react';
+import AutoScroll from 'embla-carousel-auto-scroll';
 
 const serviceCards = [
   {
@@ -18,10 +21,22 @@ const serviceCards = [
 ];
 
 const heroImages = [
-  'https://i.postimg.cc/jdThtK95/Hero-Ondor.jpg',
-  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-  'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
-  'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+  'https://i.postimg.cc/tCh2q1nM/anthony-delanoix-b5-POxb2a-L9o-unsplash-2.webp',
+  'https://i.postimg.cc/XJ4ygJYp/low-angle-view-of-t.webp',
+  'https://i.postimg.cc/66SpWqxn/low-angle-shot-of.jpg',
+];
+
+const clientLogos = [
+  'https://i.postimg.cc/8P5kmDpt/Frame-10.png',
+  'https://i.postimg.cc/dtxsWXDv/Frame-11.png',
+  'https://i.postimg.cc/mk6s5zLV/Frame-2.png',
+  'https://i.postimg.cc/ryhMmb1W/Frame-3.png',
+  'https://i.postimg.cc/zvfN7SrV/Frame-4.png',
+  'https://i.postimg.cc/vBhM52CJ/Frame-5.png',
+  'https://i.postimg.cc/nLvnhh2c/Frame-6.png',
+  'https://i.postimg.cc/Qthh9ZYg/Frame-7.png',
+  'https://i.postimg.cc/GmTc6QsD/Frame-8.png',
+  'https://i.postimg.cc/s2FVzhpN/Frame-9.png',
 ];
 
 const NewHeroSection = () => {
@@ -88,7 +103,7 @@ const NewHeroSection = () => {
   }, [current]);
 
   return (
-    <section className="relative min-h-screen flex items-center text-white py-16 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between text-white py-16 overflow-hidden">
       {/* Slide de imagens com zoom-in */}
       {heroImages.map((img, idx) => (
         <div
@@ -109,46 +124,71 @@ const NewHeroSection = () => {
       {/* Overlay escuro e gradiente */}
       <div className="absolute inset-0 bg-black/85 z-0" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-0" />
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-center min-h-[70vh]">
-        {/* Coluna esquerda */}
-        <div className="flex flex-col items-start justify-center animate-fade-in-up">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[70vh] text-center flex-1">
+        {/* Coluna centralizada */}
+        <div className="flex flex-col items-center justify-center animate-fade-in-up w-full">
           {/* Tag superior */}
           <div className="text-white text-xs sm:text-sm font-light tracking-widest mb-2 mt-8 sm:mt-0 uppercase" style={{letterSpacing: '0.15em'}}>
             Ondor - Arquitetura & Construção
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-5 sm:mb-7 tracking-wide text-white/90" style={{letterSpacing: '0.01em', fontFamily: 'Montserrat, Arial, sans-serif'}}>
-            Sua <span className="text-ondor-special font-extrabold">Parceria Estratégica</span><br />
-            em Arquitetura e <br /> Aprovações
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-3 sm:mb-5 tracking-wide text-white/90" style={{letterSpacing: '0.01em', fontFamily: 'Montserrat, Arial, sans-serif'}}>
+            Sua Parceria Estratégica em<br />
+            Arquitetura e Aprovações
           </h1>
-          <p className="text-base sm:text-lg text-white/90 mb-6 sm:mb-10 font-light max-w-xl">
+          <p className="text-base sm:text-lg text-white/90 mb-3 sm:mb-5 font-light max-w-3xl mx-auto whitespace-nowrap text-center">
             Transformamos seu sonho de construir em realidade com <strong className="font-semibold text-ondor-special">técnica, visão e propósito.</strong>
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md mb-2 sm:mb-0">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md mb-2 sm:mb-0 justify-center">
             <Link
               to="/contato"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 hover:border-ondor-special transition-all duration-300 text-center w-full sm:w-auto uppercase"
+              className="border-2 border-white text-white px-8 py-2 rounded-xl font-bold text-lg hover:bg-white/10 hover:border-ondor-special transition-all duration-300 text-center w-full sm:w-auto uppercase"
             >
               FALE CONOSCO
             </Link>
           </div>
-        </div>
-      </div>
-      {/* Linhas verticais sutis */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        <div className="absolute top-0 bottom-0 left-1/4 w-px bg-white/10" />
-        <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/10" />
-        <div className="absolute top-0 bottom-0 left-3/4 w-px bg-white/10" />
-      </div>
-      {/* Faixa gold inferior, metade da tela, alinhada à direita */}
-      <div className="absolute bottom-0 right-0 w-full sm:w-1/2 bg-[#bfa76a] py-5 px-4 sm:px-12 flex flex-col sm:flex-row items-center justify-center gap-4 z-20 shadow-lg rounded-tl-2xl rounded-tr-2xl sm:rounded-tr-none">
-        <div className="flex flex-col sm:flex-row items-center justify-center w-full">
-          <span className="text-lg sm:text-xl font-semibold tracking-wide text-black text-center">Loteamentos</span>
-          <span className="hidden sm:inline-block text-2xl text-black sm:mx-4">|</span>
-          <span className="text-lg sm:text-xl font-semibold tracking-wide text-black text-center">Empreendimentos Verticais & Horizontais</span>
+          {/* Serviços abaixo do botão */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-6">
+            <div className="flex items-center gap-2 justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+              <span className="text-base sm:text-lg font-semibold text-white">Loteamentos</span>
+            </div>
+            <div className="flex items-center gap-2 justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
+              <span className="text-base sm:text-lg font-semibold text-white">Empreendimentos Verticais & Horizontais</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+function AutoPlayLogoCarousel() {
+  const [emblaRef] = useEmblaCarousel({
+    align: 'start',
+    loop: true,
+    dragFree: true,
+    skipSnaps: false,
+  }, [
+    AutoScroll({
+      speed: 1.2,
+      stopOnInteraction: false,
+      stopOnMouseEnter: false,
+      stopOnFocusIn: false,
+    })
+  ]);
+
+  return (
+    <div ref={emblaRef} className="overflow-hidden w-full">
+      <div className="flex">
+        {clientLogos.map((src, idx) => (
+          <div key={src} className="flex items-center justify-center px-6 basis-1/2 sm:basis-1/3 md:basis-1/5 transition-opacity duration-500">
+            <img src={src} alt={`Logo cliente ${idx + 1}`} className="h-16 object-contain" style={{maxWidth: '180px'}} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default NewHeroSection;

@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import NewHeroSection from '../components/NewHeroSection';
+import LogoCarousel from '../components/LogoCarousel';
 import StatsCounter from '../components/StatsCounter';
 import About from '../components/About';
 import Services from '../components/Services';
@@ -12,8 +13,9 @@ const Index = () => {
   return (
     <Layout>
       <NewHeroSection />
-      <StatsCounter />
+      <LogoCarousel />
       <About />
+      <StatsCounter />
       <ArchitectureShowcase />
       <Services />
       <ProcessSection />

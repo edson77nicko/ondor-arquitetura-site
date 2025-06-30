@@ -349,7 +349,7 @@ const Servicos = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="/contato"
-                  className="inline-block bg-white text-ondor-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100/90 transition-all duration-300 transform hover:scale-105 text-center"
+                  className="inline-block bg-white text-ondor-primary px-8 py-2 rounded-xl font-semibold text-lg hover:bg-gray-100/90 transition-all duration-300 transform hover:scale-105 text-center"
                 >
                   Solicitar Orçamento
                 </a>

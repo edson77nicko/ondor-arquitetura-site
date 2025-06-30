@@ -22,13 +22,13 @@ const CTASection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/contato"
-                className="inline-block bg-white text-ondor-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100/90 transition-all duration-300 transform hover:scale-105 text-center"
+                className="inline-block bg-white text-ondor-primary px-8 py-2 rounded-xl font-semibold text-lg hover:bg-gray-100/90 transition-all duration-300 transform hover:scale-105 text-center"
               >
                 Quero Falar com a ONDOR
               </Link>
               <Link
                 to="/servicos"
-                className="inline-block border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-center"
+                className="inline-block border-2 border-white text-white px-8 py-2 rounded-xl font-semibold text-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 text-center"
               >
                 Ver Nossos Serviços
               </Link>
