@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Building, Home, FileText } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const serviceCards = [
   {
@@ -17,9 +17,18 @@ const serviceCards = [
   }
 ];
 
+const heroImages = [
+  'https://i.postimg.cc/jdThtK95/Hero-Ondor.jpg',
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+  'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+  'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+];
+
 const NewHeroSection = () => {
   // Canvas de partículas sutil
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [current, setCurrent] = useState(0);
+  const [zoom, setZoom] = useState(1);
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -62,63 +71,80 @@ const NewHeroSection = () => {
     return () => { running = false; window.removeEventListener('resize', handleResize); };
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+      setZoom(1);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    setZoom(1);
+    const zoomInterval = setInterval(() => {
+      setZoom((z) => (z < 1.08 ? z + 0.0007 : 1.08));
+    }, 16);
+    return () => clearInterval(zoomInterval);
+  }, [current]);
+
   return (
-    <section
-      className="relative min-h-screen flex items-center text-white py-16 overflow-hidden bg-gradient-to-br from-ondor-primary via-ondor-accent/80 to-ondor-primary/90"
-      style={{ backgroundImage: `url('https://i.postimg.cc/jdThtK95/Hero-Ondor.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}
-    >
+    <section className="relative min-h-screen flex items-center text-white py-16 overflow-hidden">
+      {/* Slide de imagens com zoom-in */}
+      {heroImages.map((img, idx) => (
+        <div
+          key={img}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${idx === current ? 'opacity-100 z-0' : 'opacity-0 z-0'}`}
+          style={{
+            backgroundImage: `url('${img}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            transform: idx === current ? `scale(${zoom})` : 'scale(1)',
+            transition: idx === current ? 'transform 6s linear, opacity 1s' : 'opacity 1s',
+          }}
+        />
+      ))}
       {/* Canvas partículas */}
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0 opacity-30 pointer-events-none" />
       {/* Overlay escuro e gradiente */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-ondor-primary/80 to-black/60 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-0" />
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-16 items-center justify-between">
+      <div className="absolute inset-0 bg-black/85 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-0" />
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-start justify-center min-h-[70vh]">
         {/* Coluna esquerda */}
-        <div className="flex-1 flex flex-col items-start justify-center animate-fade-in-up">
-          <div className="inline-flex items-center bg-white/20 text-white px-4 py-1.5 rounded-full text-sm sm:text-base font-semibold mb-7 mt-8 sm:mt-0 shadow-sm backdrop-blur-sm tracking-wide">
-            <FileText className="h-5 w-5 mr-2" />
+        <div className="flex flex-col items-start justify-center animate-fade-in-up">
+          {/* Tag superior */}
+          <div className="text-white text-xs sm:text-sm font-light tracking-widest mb-2 mt-8 sm:mt-0 uppercase" style={{letterSpacing: '0.15em'}}>
             Ondor - Arquitetura & Construção
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-snug md:leading-tight mb-5 sm:mb-7 tracking-wide text-white/90" style={{letterSpacing: '0.01em'}}>
-            Sua <span className="text-ondor-special font-semibold">Parceria Estratégica</span><br />
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-5 sm:mb-7 tracking-wide text-white/90" style={{letterSpacing: '0.01em', fontFamily: 'Montserrat, Arial, sans-serif'}}>
+            Sua <span className="text-ondor-special font-extrabold">Parceria Estratégica</span><br />
             em Arquitetura e <br /> Aprovações
           </h1>
-          <p className="text-lg sm:text-2xl text-white/90 mb-6 sm:mb-10 font-light max-w-xl">
+          <p className="text-base sm:text-lg text-white/90 mb-6 sm:mb-10 font-light max-w-xl">
             Transformamos seu sonho de construir em realidade com <strong className="font-semibold text-ondor-special">técnica, visão e propósito.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md mb-2 sm:mb-0">
             <Link
               to="/contato"
-              className="bg-ondor-special text-ondor-primary px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-ondor-special/90 hover:scale-105 transition-all duration-300 text-center w-full sm:w-auto"
+              className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 hover:border-ondor-special transition-all duration-300 text-center w-full sm:w-auto uppercase"
             >
-              Fale conosco
-            </Link>
-            <Link
-              to="/portfolio"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 hover:border-ondor-special transition-all duration-300 text-center w-full sm:w-auto"
-            >
-              Nosso Portfólio
+              FALE CONOSCO
             </Link>
           </div>
         </div>
-        {/* Coluna direita: cards de serviços */}
-        <div className="flex-1 flex flex-col gap-7 w-full max-w-lg animate-fade-in-up lg:mt-0 mt-0 sm:mt-12">
-          <p className="text-base text-white/90 mb-1 font-normal">
-            Somos líderes no desenvolvimento e aprovação de projetos para:
-          </p>
-          <div className="grid grid-cols-1 gap-6">
-            {serviceCards.map((card, i) => (
-              <div key={card.title} className="group flex items-start gap-5 bg-ondor-primary/30 p-6 rounded-2xl shadow-lg border border-white/20 backdrop-blur-lg hover:scale-[1.03] transition-transform duration-300">
-                <div className="flex-shrink-0 bg-ondor-primary/20 p-4 rounded-xl shadow-md flex items-center justify-center">
-                  {card.icon}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-xl mb-1 text-white drop-shadow-sm">{card.title}</h3>
-                  <p className="text-white/80 text-base">{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      </div>
+      {/* Linhas verticais sutis */}
+      <div className="absolute inset-0 pointer-events-none z-10">
+        <div className="absolute top-0 bottom-0 left-1/4 w-px bg-white/10" />
+        <div className="absolute top-0 bottom-0 left-1/2 w-px bg-white/10" />
+        <div className="absolute top-0 bottom-0 left-3/4 w-px bg-white/10" />
+      </div>
+      {/* Faixa gold inferior, metade da tela, alinhada à direita */}
+      <div className="absolute bottom-0 right-0 w-full sm:w-1/2 bg-[#bfa76a] py-5 px-4 sm:px-12 flex flex-col sm:flex-row items-center justify-center gap-4 z-20 shadow-lg rounded-tl-2xl rounded-tr-2xl sm:rounded-tr-none">
+        <div className="flex flex-col sm:flex-row items-center justify-center w-full">
+          <span className="text-lg sm:text-xl font-semibold tracking-wide text-black text-center">Loteamentos</span>
+          <span className="hidden sm:inline-block text-2xl text-black sm:mx-4">|</span>
+          <span className="text-lg sm:text-xl font-semibold tracking-wide text-black text-center">Empreendimentos Verticais & Horizontais</span>
         </div>
       </div>
     </section>

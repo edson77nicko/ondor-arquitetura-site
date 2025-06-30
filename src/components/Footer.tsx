@@ -3,17 +3,17 @@ import { Linkedin, Youtube, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="relative bg-ondor-footer text-white pt-20 rounded-t-3xl z-20 -mt-12">
+    <footer className="relative bg-black text-white pt-20 rounded-t-3xl z-20 -mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
           {/* Logo e Descrição */}
-          <div className="col-span-1 md:col-span-2">
-            <img src="https://i.postimg.cc/kX3G6gFQ/Logo-Footer.png" alt="Logo Ondor" className="mb-4 w-40 h-auto" />
-            <p className="text-gray-300 mb-4">
+          <div className="col-span-1 md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
+            <img src="https://i.postimg.cc/kX3G6gFQ/Logo-Footer.png" alt="Logo Ondor" className="mb-4 w-40 h-auto mx-auto md:mx-0" />
+            <p className="text-gray-300 mb-4 max-w-xs md:max-w-none">
               Arquitetura e Imobiliária com Alma, Técnica e Resultado.
             </p>
             {/* Social Media Block - Lucide icons */}
-            <div className="flex flex-row items-center gap-6 mt-6">
+            <div className="flex flex-row items-center gap-6 mt-6 justify-center md:justify-start">
               <a href="https://www.instagram.com/ondor_arquitetura/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Ondor" className="hover:text-ondor-special transition-colors">
                 <Instagram className="h-7 w-7" />
               </a>
@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
 
           {/* Links Institucionais */}
-          <div>
+          <div className="col-span-1 md:col-span-3 flex flex-col items-center md:items-start mt-10 md:mt-0">
             <h3 className="text-lg font-semibold mb-4">Institucional</h3>
             <ul className="space-y-2">
               <li>
@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
 
           {/* Contato */}
-          <div>
+          <div className="col-span-1 md:col-span-4 flex flex-col items-center md:items-start mt-10 md:mt-0">
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <div className="space-y-2 text-gray-300 text-sm">
               <p className="font-semibold text-white">Ondor Arquitetura e Construções</p>
@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
           <p>&copy; 2024 ONDOR - Arquitetura e Imobiliária. Todos os direitos reservados.</p>
         </div>
       </div>

@@ -29,11 +29,11 @@ const Navigation = () => {
   return (
     <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-ondor-primary/95 backdrop-blur-md' 
+        ? 'bg-black/95 backdrop-blur-md' 
         : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center py-6">
           <Link to="/" className="flex items-center">
             <img src="https://i.postimg.cc/fWXTNhnJ/logo-header.png" alt="Logo Ondor" className="h-10 w-auto mr-2 transition-all duration-300" />
           </Link>
@@ -47,7 +47,7 @@ const Navigation = () => {
                 className={`transition-colors duration-300 ${
                   isScrolled
                     ? 'text-white font-semibold hover:text-ondor-special'
-                    : 'text-white/80 hover:text-white font-semibold'
+                    : 'text-white/90 hover:text-white font-semibold'
                 } ${isActive(item.path) ? 'underline underline-offset-4' : ''}`}
               >
                 {item.name}

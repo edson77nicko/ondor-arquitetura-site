@@ -15,7 +15,7 @@ const StatsCounter = () => {
     { value: "40+", label: "Anos de Experiência", numericValue: 40 },
     { value: "100%", label: "Projetos Aprovados", numericValue: 100 },
     { value: "500+", label: "Empreendimentos", numericValue: 500 },
-    { value: "24h", label: "Tempo de Resposta", numericValue: 24 }
+    { value: "1h", label: "Tempo de Resposta", numericValue: 1 }
   ];
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const StatsCounter = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 bg-ondor-primary">
+    <section ref={sectionRef} className="py-16 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (

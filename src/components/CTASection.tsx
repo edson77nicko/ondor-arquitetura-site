@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 
 const CTASection = () => {
@@ -6,9 +5,11 @@ const CTASection = () => {
     <section 
       className="relative pt-20 pb-32 bg-cover bg-center bg-fixed bg-no-repeat overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(rgba(1, 46, 111, 0.7), rgba(1, 46, 111, 0.7)), url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')`
+        backgroundImage: `url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')`
       }}
     >
+      <div className="absolute inset-0 bg-black/85 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-0" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-end">
           <div className="max-w-2xl bg-white/15 backdrop-blur-sm rounded-2xl p-12 border border-white/30">

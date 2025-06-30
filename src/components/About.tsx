@@ -103,10 +103,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Elemento decorativo */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-ondor-accent to-ondor-primary rounded-full opacity-10"></div>
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-ondor-primary to-ondor-background rounded-full opacity-10"></div>
           </div>
         </div>
       </div>
