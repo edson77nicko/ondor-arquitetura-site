@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Building, Home, FileText } from 'lucide-react';
+import whatsappIcon from './icons/whatsapp.svg';
 import { useEffect, useRef, useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -102,8 +103,20 @@ const NewHeroSection = () => {
     return () => clearInterval(zoomInterval);
   }, [current]);
 
+  // Animações locais para fade-in-up
+  // eslint-disable-next-line jsx-a11y/no-static-element-interactions
   return (
     <section className="relative min-h-screen flex flex-col justify-between text-white py-16 overflow-hidden">
+      <style>{`
+        @keyframes hero-fade-in-up {
+          0% { opacity: 0; transform: translateY(32px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-in-up { animation: hero-fade-in-up 0.9s cubic-bezier(0.23,1,0.32,1) both; }
+        .hero-fade-in-up-delay { animation: hero-fade-in-up 0.9s cubic-bezier(0.23,1,0.32,1) both; animation-delay: 0.3s; }
+        .hero-fade-in-up-delay2 { animation: hero-fade-in-up 0.9s cubic-bezier(0.23,1,0.32,1) both; animation-delay: 0.6s; }
+        .hero-fade-in-up-delay3 { animation: hero-fade-in-up 0.9s cubic-bezier(0.23,1,0.32,1) both; animation-delay: 0.9s; }
+      `}</style>
       {/* Slide de imagens com zoom-in */}
       {heroImages.map((img, idx) => (
         <div
@@ -126,28 +139,65 @@ const NewHeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-0" />
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[70vh] text-center flex-1">
         {/* Coluna centralizada */}
-        <div className="flex flex-col items-center justify-center animate-fade-in-up w-full">
+        <div className="flex flex-col items-center justify-center w-full">
           {/* Tag superior */}
-          <div className="text-white text-xs sm:text-sm font-light tracking-widest mb-2 mt-8 sm:mt-0 uppercase" style={{letterSpacing: '0.15em'}}>
+          <div className="text-white text-xs sm:text-sm font-light tracking-widest mb-2 mt-8 sm:mt-0 uppercase hero-fade-in-up" style={{letterSpacing: '0.15em'}}>
             Ondor - Arquitetura & Construção
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-3 sm:mb-5 tracking-wide text-white/90" style={{letterSpacing: '0.01em', fontFamily: 'Montserrat, Arial, sans-serif'}}>
+          <h1
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-3 sm:mb-5 tracking-wide text-white/90 hero-fade-in-up-delay"
+            style={{
+              letterSpacing: '0.01em',
+              fontFamily: 'Montserrat, Arial, sans-serif',
+              textShadow: '0 2px 8px rgba(0,0,0,0.18), 0 1px 2px rgba(0,0,0,0.12)'
+            }}
+          >
             Sua Parceria Estratégica em<br />
             Arquitetura e Aprovações
           </h1>
-          <p className="text-base sm:text-lg text-white/90 mb-3 sm:mb-5 font-light max-w-3xl mx-auto whitespace-nowrap text-center">
+          <p className="text-base sm:text-lg text-white/90 mb-3 sm:mb-5 font-light max-w-3xl mx-auto whitespace-nowrap text-center hero-fade-in-up-delay2">
             Transformamos seu sonho de construir em realidade com <strong className="font-semibold text-ondor-special">técnica, visão e propósito.</strong>
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md mb-2 sm:mb-0 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-[600px] mb-2 sm:mb-0 justify-center hero-fade-in-up-delay3">
             <Link
               to="/contato"
-              className="border-2 border-white text-white px-8 py-2 rounded-xl font-bold text-lg hover:bg-white/10 hover:border-ondor-special transition-all duration-300 text-center w-full sm:w-auto uppercase"
+              className="border-2 border-white px-8 py-2 rounded-xl font-bold text-lg transition-all duration-300 text-center w-full sm:w-auto uppercase"
+              style={{
+                background: 'hsl(var(--accent) / 0.97)',
+                color: 'hsl(var(--primary))',
+                boxShadow: 'none',
+                textShadow: 'none',
+              }}
+              onMouseOver={e => {
+                e.currentTarget.style.boxShadow = '0 8px 18px -6px rgba(0,0,0,0.16)';
+                e.currentTarget.style.background = 'hsl(var(--accent) / 1)';
+                e.currentTarget.style.borderColor = 'white';
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.background = 'hsl(var(--accent) / 0.97)';
+                e.currentTarget.style.borderColor = 'white';
+              }}
             >
-              FALE CONOSCO
+              <span className="flex items-center justify-center gap-2">
+                <img src={whatsappIcon} alt="WhatsApp" style={{ width: 22, height: 22, marginRight: 4 }} />
+                INICIE SEU PROJETO
+              </span>
+            </Link>
+            <Link
+              to="/servicos"
+              className="border-2 border-white text-white px-8 py-2 rounded-xl font-bold text-lg transition-all duration-300 text-center w-full sm:w-auto uppercase hover:bg-white/10"
+              style={{
+                background: 'transparent',
+                boxShadow: 'none',
+                textShadow: 'none',
+              }}
+            >
+              NOSSOS SERVIÇOS
             </Link>
           </div>
           {/* Serviços abaixo do botão */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-6 hero-fade-in-up-delay3">
             <div className="flex items-center gap-2 justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
               <span className="text-base sm:text-lg font-semibold text-white">Loteamentos</span>
