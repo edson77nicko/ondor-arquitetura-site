@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { Linkedin, Youtube, Instagram, Facebook } from 'lucide-react';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative bg-black text-white pt-20 rounded-t-3xl z-20 -mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -76,7 +78,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; 2024 ONDOR - Arquitetura e Imobiliária. Todos os direitos reservados.</p>
+          <p>&copy; {currentYear} ONDOR - Arquitetura e Imobiliária. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>
