@@ -158,9 +158,11 @@ const NewHeroSection = () => {
           <p className="text-base sm:text-lg text-white/90 mb-3 sm:mb-5 font-light max-w-3xl mx-auto whitespace-nowrap text-center hero-fade-in-up-delay2">
             Transformamos seu sonho de construir em realidade com <strong className="font-semibold text-ondor-special">técnica, visão e propósito.</strong>
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-[600px] mb-2 sm:mb-0 justify-center hero-fade-in-up-delay3">
-            <Link
-              to="/contato"
+          <div className="flex flex-col sm:flex-row gap-5 w-full max-w-[600px] mb-2 sm:mb-0 justify-center hero-fade-in-up-delay3">
+            <a
+              href="https://wa.me/"
+              target="_blank"
+              rel="noreferrer"
               className="border-2 border-white px-8 py-2 rounded-xl font-bold text-lg transition-all duration-300 text-center w-full sm:w-auto uppercase"
               style={{
                 background: 'hsl(var(--accent) / 0.97)',
@@ -183,9 +185,9 @@ const NewHeroSection = () => {
                 <img src={whatsappIcon} alt="WhatsApp" style={{ width: 22, height: 22, marginRight: 4 }} />
                 INICIE SEU PROJETO
               </span>
-            </Link>
+            </a>
             <Link
-              to="/servicos"
+              to="#"
               className="border-2 border-white text-white px-8 py-2 rounded-xl font-bold text-lg transition-all duration-300 text-center w-full sm:w-auto uppercase hover:bg-white/10"
               style={{
                 background: 'transparent',
@@ -196,17 +198,18 @@ const NewHeroSection = () => {
               NOSSOS SERVIÇOS
             </Link>
           </div>
-          {/* Serviços abaixo do botão */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-6 hero-fade-in-up-delay3">
-            <div className="flex items-center gap-2 justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-              <span className="text-base sm:text-lg font-semibold text-white">Loteamentos</span>
-            </div>
-            <div className="flex items-center gap-2 justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
-              <span className="text-base sm:text-lg font-semibold text-white">Empreendimentos Verticais & Horizontais</span>
-            </div>
-          </div>
+        </div>
+      </div>
+
+      {/* Itens de serviços na parte inferior da seção */}
+      <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 mb-2 hero-fade-in-up-delay3">
+        <div className="flex items-center gap-2 justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+          <span className="text-base sm:text-lg font-semibold text-white">Loteamentos</span>
+        </div>
+        <div className="flex items-center gap-2 justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
+          <span className="text-base sm:text-lg font-semibold text-white">Empreendimentos Verticais & Horizontais</span>
         </div>
       </div>
     </section>
