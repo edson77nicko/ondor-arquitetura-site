@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Eye, Award, Users } from 'lucide-react';
 
@@ -57,7 +56,7 @@ const ArchitectureShowcase = () => {
 
         <div className="relative">
           {/* Main Image Display */}
-          <div className="relative h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+          <div className="relative h-64 sm:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
             <img
               src={projects[activeProject].image}
               alt={projects[activeProject].title}
@@ -68,7 +67,7 @@ const ArchitectureShowcase = () => {
             {/* Project Info Overlay */}
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
               <div className="flex flex-wrap items-end justify-between">
-                <div className="mb-4 lg:mb-0">
+                <div className="mb-4 lg:mb-0 w-full sm:w-auto">
                   <div className="text-sm font-medium text-white/80 mb-2">
                     {projects[activeProject].category}
                   </div>
@@ -79,8 +78,8 @@ const ArchitectureShowcase = () => {
                     {projects[activeProject].description}
                   </p>
                 </div>
-                
-                <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6 text-center">
+                {/* Hide area/year on mobile */}
+                <div className="hidden sm:flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6 text-center">
                   <div>
                     <div className="text-2xl font-bold">{projects[activeProject].area}</div>
                     <div className="text-sm text-white/80">Área Total</div>
@@ -93,16 +92,16 @@ const ArchitectureShowcase = () => {
               </div>
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Navigation Arrows - move outside on mobile */}
             <button
               onClick={prevProject}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-black/50 transition-all duration-300"
+              className="absolute left-[-28px] sm:left-4 top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-black/50 transition-all duration-300"
             >
               <ChevronLeft size={24} />
             </button>
             <button
               onClick={nextProject}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-black/50 transition-all duration-300"
+              className="absolute right-[-28px] sm:right-4 top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-black/50 transition-all duration-300"
             >
               <ChevronRight size={24} />
             </button>

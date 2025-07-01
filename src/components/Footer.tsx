@@ -6,14 +6,11 @@ const Footer = () => {
     <footer className="relative bg-black text-white pt-20 rounded-t-3xl z-20 -mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 items-start">
-          {/* Logo e Descrição */}
-          <div className="col-span-1 md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left">
-            <img src="https://i.postimg.cc/kX3G6gFQ/Logo-Footer.png" alt="Logo Ondor" className="mb-4 w-40 h-auto mx-auto md:mx-0" />
-            <p className="text-gray-300 mb-4 max-w-xs md:max-w-none">
-              Arquitetura e Imobiliária com Alma, Técnica e Resultado.
-            </p>
+          {/* Logo */}
+          <div className="col-span-1 md:col-span-3 flex flex-col items-center md:items-start text-center md:text-left">
+            <img src="https://i.postimg.cc/kX3G6gFQ/Logo-Footer.png" alt="Logo Ondor" className="mb-2 w-40 h-auto mx-auto md:mx-0" />
             {/* Social Media Block - Lucide icons */}
-            <div className="flex flex-row items-center gap-6 mt-6 justify-center md:justify-start">
+            <div className="flex flex-row items-center gap-6 mt-2 justify-center md:justify-start">
               <a href="https://www.instagram.com/ondor_arquitetura/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Ondor" className="hover:text-ondor-special transition-colors">
                 <Instagram className="h-7 w-7" />
               </a>
@@ -53,13 +50,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contato */}
-          <div className="col-span-1 md:col-span-4 flex flex-col items-center md:items-start mt-10 md:mt-0">
-            <h3 className="text-lg font-semibold mb-4">Contato</h3>
+          {/* Endereço */}
+          <div className="col-span-1 md:col-span-3 flex flex-col items-center md:items-start mt-10 md:mt-0">
+            <h3 className="text-lg font-semibold mb-4">Endereço</h3>
             <div className="space-y-2 text-gray-300 text-sm">
               <p className="font-semibold text-white">Ondor Arquitetura e Construções</p>
               <p>Localizado em: ONDOR Negócios Imobiliários</p>
-              <p>Endereço: R. Topázio, 458 - Jardim Nomura, Cotia - SP, 06717-235</p>
+              <p>R. Topázio, 458 - Jardim Nomura, Cotia - SP, 06717-235</p>
+            </div>
+          </div>
+
+          {/* Contato */}
+          <div className="col-span-1 md:col-span-3 flex flex-col items-center md:items-start mt-10 md:mt-0">
+            <h3 className="text-lg font-semibold mb-4">Contato</h3>
+            <div className="space-y-2 text-gray-300 text-sm">
               <p>Telefone: <a href="tel:+551147032874" className="hover:underline">(11) 4703-2874</a></p>
               <div className="mt-2">
                 <span className="block font-semibold text-white mb-1">Horário de funcionamento:</span>

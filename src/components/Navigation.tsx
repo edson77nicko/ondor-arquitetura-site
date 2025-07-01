@@ -70,14 +70,15 @@ const Navigation = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden fixed top-20 left-4 right-4 z-50 bg-ondor-primary/95 border border-ondor-primary/60 rounded-2xl shadow-2xl backdrop-blur-xl p-4 animate-fade-in-up">
+          <div className="md:hidden fixed top-20 left-4 right-4 z-50 rounded-2xl shadow-2xl p-4 animate-fade-in-up"
+               style={{ background: 'rgba(0,0,0,0.93)' }}>
             <div className="space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`block px-4 py-3 text-lg rounded-xl transition-colors duration-200 text-white font-semibold shadow-md hover:bg-ondor-special/10 hover:text-ondor-special ${
-                    isActive(item.path) ? 'underline underline-offset-4' : ''
+                  className={`block px-4 py-3 text-lg rounded-xl transition-colors duration-200 text-white font-semibold shadow-md hover:text-ondor-special ${
+                    isActive(item.path) ? 'text-ondor-special font-bold' : ''
                   }`}
                   onClick={() => setIsOpen(false)}
                 >

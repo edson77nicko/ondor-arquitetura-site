@@ -78,12 +78,12 @@ function ValoresInstitucionaisTabs() {
   }, [active]);
   return (
     <div className="flex flex-col md:flex-row gap-8 w-full max-w-5xl mx-auto items-start relative z-10">
-      <div className="flex flex-row md:flex-col w-full md:w-72 shrink-0 bg-white/80 border border-gray-200 rounded-2xl p-2 shadow-lg overflow-x-auto whitespace-nowrap gap-1 md:gap-0">
+      <div className="grid grid-cols-2 gap-2 md:flex md:flex-col md:w-72 w-full shrink-0 bg-white/80 border border-gray-200 rounded-2xl p-2 shadow-lg">
         {valores.map((v, i) => (
           <button
             key={v.tab}
             onClick={() => setActive(i)}
-            className={`flex items-center gap-3 text-left w-auto min-w-[120px] max-w-xs md:w-full md:justify-start md:rounded-xl md:mb-2 md:py-4 md:px-6 text-base font-semibold transition-all
+            className={`flex items-center gap-3 text-left w-full md:w-full md:justify-start md:rounded-xl md:mb-2 md:py-4 md:px-6 text-base font-semibold transition-all
               ${active === i ? 'bg-ondor-primary/90 text-white shadow-lg rounded-xl px-5 h-10' : 'text-gray-600 hover:bg-ondor-primary/10 rounded-lg'}
             `}
             style={{ outline: 'none', border: 'none' }}
@@ -168,8 +168,8 @@ const Sobre = () => {
         {/* Story Section */}
         <section className="py-20 bg-gradient-to-b from-gray-50 via-white to-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-fade-in-up">
+            <div className="flex flex-col-reverse lg:flex-row gap-12 items-center">
+              <div className="animate-fade-in-up w-full lg:w-1/2">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Nossa História
                 </h2>
@@ -183,7 +183,7 @@ const Sobre = () => {
                   Com <strong className="text-ondor-primary font-semibold">sede própria em Cotia (SP)</strong>, somos <strong className="text-gray-900 font-semibold">referência regional</strong> em soluções completas de arquitetura e imobiliária para empreendimentos urbanos.
                 </p>
               </div>
-              <div className="animate-fade-in-up flex justify-center" style={{ animationDelay: '0.2s' }}>
+              <div className="animate-fade-in-up flex justify-center w-full lg:w-1/2" style={{ animationDelay: '0.2s' }}>
                 <div className="w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
                   <iframe
                     width="100%"

@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { MapPin, Building, Home, FileText } from 'lucide-react';
 import whatsappIcon from './icons/whatsapp.svg';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import useEmblaCarousel from 'embla-carousel-react';
 import AutoScroll from 'embla-carousel-auto-scroll';
+import { Particles } from '@tsparticles/react';
+import { loadFull } from 'tsparticles';
 
 const serviceCards = [
   {
@@ -41,51 +43,8 @@ const clientLogos = [
 ];
 
 const NewHeroSection = () => {
-  // Canvas de partículas sutil
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [current, setCurrent] = useState(0);
   const [zoom, setZoom] = useState(1);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    let width = window.innerWidth;
-    let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
-    const handleResize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    };
-    window.addEventListener('resize', handleResize);
-    const particles = Array.from({ length: 40 }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.5 + 0.5,
-      dx: (Math.random() - 0.5) * 0.2,
-      dy: (Math.random() - 0.5) * 0.2,
-      a: Math.random() * 0.2 + 0.05
-    }));
-    let running = true;
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      for (const p of particles) {
-        p.x += p.dx; p.y += p.dy;
-        if (p.x < 0 || p.x > width) p.dx *= -1;
-        if (p.y < 0 || p.y > height) p.dy *= -1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
-        ctx.fillStyle = `rgba(255,255,255,${p.a})`;
-        ctx.fill();
-      }
-      if (running) requestAnimationFrame(animate);
-    }
-    animate();
-    return () => { running = false; window.removeEventListener('resize', handleResize); };
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -102,6 +61,10 @@ const NewHeroSection = () => {
     }, 16);
     return () => clearInterval(zoomInterval);
   }, [current]);
+
+  const particlesInit = useCallback(async (engine) => {
+    await loadFull(engine);
+  }, []);
 
   // Animações locais para fade-in-up
   // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -132,12 +95,30 @@ const NewHeroSection = () => {
           }}
         />
       ))}
-      {/* Canvas partículas */}
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0 opacity-30 pointer-events-none" />
-      {/* Overlay escuro e gradiente */}
-      <div className="absolute inset-0 bg-black/85 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-0" />
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[70vh] text-center flex-1">
+      {/* Overlay escuro e gradiente acima do slide */}
+      <div className="absolute inset-0 bg-black/85 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
+      {/* Partículas acima do overlay, abaixo do conteúdo principal */}
+      {/* <div className="absolute inset-0 w-full h-full z-20 pointer-events-none">
+        <Particles
+          init={particlesInit}
+          options={{
+            fullScreen: false,
+            background: { color: { value: 'transparent' } },
+            particles: {
+              number: { value: 32, density: { enable: true, width: 800, height: 800 } },
+              color: { value: '#fff' },
+              opacity: { value: 0.45 },
+              size: { value: { min: 1.5, max: 4 } },
+              move: { enable: true, speed: 0.3, direction: 'none', random: true, straight: false, outModes: { default: 'out' } },
+              links: { enable: false },
+            },
+            detectRetina: true,
+          }}
+        />
+      </div> */}
+      {/* Conteúdo principal acima de tudo */}
+      <div className="relative z-30 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[70vh] text-center flex-1">
         {/* Coluna centralizada */}
         <div className="flex flex-col items-center justify-center w-full">
           {/* Tag superior */}
@@ -155,7 +136,7 @@ const NewHeroSection = () => {
             Sua Parceria Estratégica em<br />
             Arquitetura e Aprovações
           </h1>
-          <p className="text-base sm:text-lg text-white/90 mb-3 sm:mb-5 font-light max-w-3xl mx-auto whitespace-nowrap text-center hero-fade-in-up-delay2">
+          <p className="text-base sm:text-lg text-white/90 mb-3 sm:mb-5 font-light max-w-3xl mx-auto text-center hero-fade-in-up-delay2">
             Transformamos seu sonho de construir em realidade com <strong className="font-semibold text-ondor-special">técnica, visão e propósito.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-5 w-full max-w-[600px] mb-2 sm:mb-0 justify-center hero-fade-in-up-delay3">
@@ -202,7 +183,7 @@ const NewHeroSection = () => {
       </div>
 
       {/* Itens de serviços na parte inferior da seção */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 mb-2 hero-fade-in-up-delay3">
+      <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 mb-2 hero-fade-in-up-delay3 z-30">
         <div className="flex items-center gap-2 justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
           <span className="text-base sm:text-lg font-semibold text-white">Loteamentos</span>
