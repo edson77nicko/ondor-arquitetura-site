@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import Layout from '../components/Layout';
-import { Users, Award, Clock, MapPin, Shield, Search, Hammer } from 'lucide-react';
+import { Users, Award, Clock, MapPin, Shield, Search, Hammer, Target, Eye, HeartHandshake } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 
 // --- Tabs Verticais Institucionais ---
 const valores = [
   {
     tab: "Expertise",
-    title: "Nossa Expertise e Know-how Consolidado",
+    title: "Especialistas em Projetos de Empreendimentos Verticais, Horizontais e Loteamentos",
     icon: Award,
-    impact: "Mais de 40 anos de experiência, 3.000 vidas transformadas, 2.000 empresas atendidas.",
-    bullets: [
-      "Equipe própria de arquitetos experientes",
-      "Especialistas em loteamentos urbanos, residenciais, comerciais e industriais",
-      "Mais de 1.000 processos legalizados com excelência técnica"
-    ],
-    text: "A Ondor Arquitetura é uma empresa familiar consolidada, com know-how validado por resultados concretos e diferenciação no mercado."
+    text: (
+      <>
+        <span className="font-semibold text-ondor-primary">Ondor Arquitetura e Construções</span> conta com vasta experiência e know-how no desenvolvimento de projetos para empreendimentos verticais (prédios residenciais e comerciais), horizontais (condomínios e conjuntos residenciais) e loteamentos.<br /><br />
+        Nossa expertise abrange todas as etapas, desde o planejamento inicial até a execução técnica, garantindo soluções eficientes, inovadoras e alinhadas às necessidades do mercado e dos nossos clientes.
+      </>
+    ),
   },
   {
     tab: "Qualidade",
@@ -60,7 +59,7 @@ function ValoresInstitucionaisTabs() {
   const [progress, setProgress] = useState(0);
   React.useEffect(() => {
     setProgress(0);
-    const textLength = valores[active].text.length + valores[active].impact.length + valores[active].bullets.join('').length;
+    const textLength = typeof valores[active].text === 'string' ? valores[active].text.length : 300;
     const duration = Math.max(3500, textLength * 13);
     let raf;
     let start = Date.now();
@@ -77,35 +76,73 @@ function ValoresInstitucionaisTabs() {
     return () => cancelAnimationFrame(raf);
   }, [active]);
   return (
-    <div className="flex flex-col md:flex-row gap-8 w-full max-w-5xl mx-auto items-start relative z-10">
-      <div className="grid grid-cols-2 gap-2 md:flex md:flex-col md:w-72 w-full shrink-0 bg-white/80 border border-gray-200 rounded-2xl p-2 shadow-lg">
-        {valores.map((v, i) => (
-          <button
-            key={v.tab}
-            onClick={() => setActive(i)}
-            className={`flex items-center gap-3 text-left w-full md:w-full md:justify-start md:rounded-xl md:mb-2 md:py-4 md:px-6 text-base font-semibold transition-all
-              ${active === i ? 'bg-ondor-primary/90 text-white shadow-lg rounded-xl px-5 h-10' : 'text-gray-600 hover:bg-ondor-primary/10 rounded-lg'}
-            `}
-            style={{ outline: 'none', border: 'none' }}
-          >
-            {React.createElement(v.icon, { className: 'h-6 w-6 opacity-70' })}
-            <span>{v.tab}</span>
-          </button>
-        ))}
-      </div>
-      <div className="flex-1 max-w-3xl min-w-0 bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col gap-6">
-        <div className="flex items-center gap-4 mb-2">
-          {valores[active].icon ? React.createElement(valores[active].icon, { className: 'h-10 w-10 text-ondor-primary/90' }) : null}
-          <h3 className="text-2xl font-bold text-gray-900">{valores[active].title}</h3>
+    <div className="flex flex-col gap-10 w-full max-w-5xl mx-auto items-start relative z-10">
+      {/* Missão, Visão, Valores - sem box, com ícones e visual mais interessante */}
+      <div className="w-full flex flex-col md:flex-row gap-8 md:gap-12 mb-2">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <Target className="h-6 w-6 text-ondor-primary" />
+            <h4 className="text-xl font-bold text-ondor-primary">Nossa Missão</h4>
+          </div>
+          <p className="text-gray-700 text-base leading-relaxed">Oferecer soluções inteligentes, seguras e personalizadas em arquitetura e negócios imobiliários, promovendo a realização de sonhos com responsabilidade, qualidade e respeito.</p>
         </div>
-        <div className="text-ondor-primary font-semibold text-lg mb-2">{valores[active].impact}</div>
-        <ul className="list-disc pl-6 space-y-1 text-gray-700 text-base">
-          {valores[active].bullets.map((b, i) => <li key={i}><span className="font-medium text-gray-900">{b}</span></li>)}
-        </ul>
-        <div className="text-gray-600 text-base leading-relaxed mt-2">{valores[active].text}</div>
-        {/* Barra de progresso */}
-        <div className="w-full h-2 bg-gray-200 rounded-full mt-6 overflow-hidden">
-          <div className="h-full bg-ondor-primary transition-all" style={{ width: `${progress}%` }} />
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <Eye className="h-6 w-6 text-ondor-primary" />
+            <h4 className="text-xl font-bold text-ondor-primary">Nossa Visão</h4>
+          </div>
+          <p className="text-gray-700 text-base leading-relaxed">Ser reconhecida como uma empresa de excelência, que une tradição familiar, inovação técnica e confiança em cada entrega.</p>
+        </div>
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-2">
+            <HeartHandshake className="h-6 w-6 text-ondor-primary" />
+            <h4 className="text-xl font-bold text-ondor-primary">Nossos Valores</h4>
+          </div>
+          <ul className="list-disc pl-5 text-gray-700 text-base leading-relaxed space-y-1">
+            <li><span className="font-semibold text-gray-900">Ética</span></li>
+            <li><span className="font-semibold text-gray-900">Comprometimento</span></li>
+            <li><span className="font-semibold text-gray-900">Transparência</span></li>
+            <li><span className="font-semibold text-gray-900">Respeito</span></li>
+            <li><span className="font-semibold text-gray-900">Inovação com responsabilidade</span></li>
+            <li><span className="font-semibold text-gray-900">Valorização das relações humanas</span></li>
+          </ul>
+        </div>
+      </div>
+      {/* Tabs institucionais */}
+      <div className="flex flex-col md:flex-row gap-8 w-full items-start">
+        <div className="grid grid-cols-2 gap-2 md:flex md:flex-col md:w-72 w-full shrink-0 bg-white/80 border border-gray-200 rounded-2xl p-2 shadow-lg">
+          {valores.map((v, i) => (
+            <button
+              key={v.tab}
+              onClick={() => setActive(i)}
+              className={`flex items-center gap-3 text-left w-full md:w-full md:justify-start md:rounded-xl md:mb-2 md:py-4 md:px-6 text-base font-semibold transition-all
+                ${active === i ? 'bg-ondor-primary/90 text-white shadow-lg rounded-xl px-5 h-10' : 'text-gray-600 hover:bg-ondor-primary/10 rounded-lg'}
+              `}
+              style={{ outline: 'none', border: 'none' }}
+            >
+              {React.createElement(v.icon, { className: 'h-6 w-6 opacity-70' })}
+              <span>{v.tab}</span>
+            </button>
+          ))}
+        </div>
+        <div className="flex-1 max-w-3xl min-w-0 bg-white rounded-2xl shadow-xl border border-gray-100 p-8 flex flex-col gap-6">
+          <div className="flex items-center gap-4 mb-2">
+            {valores[active].icon ? React.createElement(valores[active].icon, { className: 'h-10 w-10 text-ondor-primary/90' }) : null}
+            <h3 className="text-2xl font-bold text-gray-900">{valores[active].title}</h3>
+          </div>
+          {valores[active].impact && (
+            <div className="text-ondor-primary font-semibold text-lg mb-2">{valores[active].impact}</div>
+          )}
+          {valores[active].bullets && (
+            <ul className="list-disc pl-6 space-y-1 text-gray-700 text-base">
+              {valores[active].bullets.map((b, i) => <li key={i}><span className="font-medium text-gray-900">{b}</span></li>)}
+            </ul>
+          )}
+          <div className="text-gray-700 text-lg leading-relaxed mt-2">{valores[active].text}</div>
+          {/* Barra de progresso */}
+          <div className="w-full h-2 bg-gray-200 rounded-full mt-6 overflow-hidden">
+            <div className="h-full bg-ondor-primary transition-all" style={{ width: `${progress}%` }} />
+          </div>
         </div>
       </div>
     </div>
@@ -174,17 +211,17 @@ const Sobre = () => {
                   Nossa História
                 </h2>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Fundada por <strong className="text-gray-900 font-semibold">Onofre e Dorotilde</strong>, nossa trajetória é marcada pela união de <strong className="text-ondor-primary font-semibold">conhecimento técnico</strong>, <strong className="text-ondor-primary font-semibold">paixão por empreender</strong> e <strong className="text-ondor-primary font-semibold">compromisso com o cliente</strong>.
+                  A <strong className="text-gray-900 font-semibold">Ondor Arquitetura e Construções</strong> foi fundada em <strong className="text-ondor-primary font-semibold">1982</strong>, resultado da visão e dedicação de seus idealizadores. Com <strong className="text-ondor-primary font-semibold">sede própria</strong> localizada em <strong className="text-gray-900 font-semibold">Cotia</strong>, município da Grande São Paulo, atuamos com excelência no desenvolvimento de projetos para <strong className="text-ondor-primary font-semibold">empreendimentos residenciais, comerciais e industriais</strong>. Nosso compromisso é oferecer <strong className="text-ondor-primary font-semibold">serviços de alta qualidade</strong>, pautados pelo respeito aos clientes, colaboradores e à sociedade.
                 </p>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Hoje, o <strong className="text-gray-900 font-semibold">Grupo ONDOR</strong> é liderado por <strong className="text-gray-900 font-semibold">Leno e Leide</strong>, que mantêm o <strong className="text-ondor-primary font-semibold">DNA familiar</strong> enquanto expandem nossa atuação com <strong className="text-ondor-primary font-semibold">inovação</strong> e <strong className="text-ondor-primary font-semibold">excelência</strong>.
-                </p>
-                <p className="text-lg text-gray-700 leading-relaxed">
-                  Com <strong className="text-ondor-primary font-semibold">sede própria em Cotia (SP)</strong>, somos <strong className="text-gray-900 font-semibold">referência regional</strong> em soluções completas de arquitetura e imobiliária para empreendimentos urbanos.
+                  Atualmente, a gestão da empresa é liderada por dois dos 4 filhos dos fundadores:<br/>
+                  <span className="block mt-2"><span className="text-ondor-primary font-semibold">• Leide Malara</span>, responsável pela área administrativa e institucional.</span>
+                  <span className="block"><span className="text-ondor-primary font-semibold">• Arquiteto Leno</span>, à frente da criação, desenvolvimento técnico e inovação dos projetos.</span>
+                  Juntos, unem a <strong className="text-gray-900 font-semibold">tradição</strong> construída ao longo de décadas com a <strong className="text-ondor-primary font-semibold">inovação</strong> e o <strong className="text-ondor-primary font-semibold">dinamismo</strong> exigidos pelo mercado atual.
                 </p>
               </div>
-              <div className="animate-fade-in-up flex justify-center w-full lg:w-1/2" style={{ animationDelay: '0.2s' }}>
-                <div className="w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+              <div className="animate-fade-in-up flex flex-col items-center w-full lg:w-1/2" style={{ animationDelay: '0.2s' }}>
+                <div className="w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 mb-6">
                   <iframe
                     width="100%"
                     height="100%"
@@ -196,6 +233,9 @@ const Sobre = () => {
                     className="w-full h-full"
                   ></iframe>
                 </div>
+                <p className="text-lg text-gray-700 leading-relaxed w-full text-left">
+                  Como <strong className="text-gray-900 font-semibold">empresa familiar</strong>, contamos com uma equipe de profissionais habilitados e capacitados, comprometidos em transformar em realidade os sonhos e expectativas de nossos clientes por meio de <strong className="text-ondor-primary font-semibold">soluções arquitetônicas inovadoras e personalizadas</strong>.
+                </p>
               </div>
             </div>
           </div>
@@ -235,10 +275,10 @@ const Sobre = () => {
                 <div className="w-36 h-36 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden border-4 border-ondor-special shadow-2xl transition-transform duration-300 hover:scale-105">
                   <img src="https://via.placeholder.com/144" alt="Leno" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-2xl font-bold text-ondor-special mb-1">Leno</h3>
-                <p className="text-ondor-primary font-semibold mb-3 uppercase tracking-wide">Diretor Executivo</p>
+                <h3 className="text-2xl font-bold text-ondor-special mb-1">Leno Malara</h3>
+                <p className="text-ondor-primary font-semibold mb-3 uppercase tracking-wide">Diretor Técnico</p>
                 <p className="text-gray-700 text-base max-w-xs mx-auto">
-                  <span className="font-semibold text-ondor-primary">Especialista em desenvolvimento de projetos</span> e gestão estratégica, mantém a tradição familiar de excelência.
+                  Arquiteto e Urbanista especialista em idealizar e projetar.
                 </p>
               </div>
               <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -246,9 +286,9 @@ const Sobre = () => {
                   <img src="https://via.placeholder.com/144" alt="Leide" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-ondor-special mb-1">Leide</h3>
-                <p className="text-ondor-primary font-semibold mb-3 uppercase tracking-wide">Diretora Comercial</p>
+                <p className="text-ondor-primary font-semibold mb-3 uppercase tracking-wide">Diretora Administrativa</p>
                 <p className="text-gray-700 text-base max-w-xs mx-auto">
-                  <span className="font-semibold text-ondor-primary">Responsável pelas relações comerciais</span> e desenvolvimento de novos negócios, com foco na satisfação do cliente.
+                  Administradora e Corretora de Imóveis.
                 </p>
               </div>
             </div>

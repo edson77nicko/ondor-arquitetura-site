@@ -40,14 +40,10 @@ const About = () => {
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Sobre a ONDOR</h2>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              A ONDOR nasceu da união entre <strong className="text-gray-900 font-semibold">experiência, valores familiares</strong> e 
-              <strong className="text-gray-900 font-semibold"> visão estratégica</strong>. Com <strong className="text-gray-900 font-semibold">sede própria em Cotia (SP)</strong>, 
-              somos <strong className="text-gray-900 font-semibold">referência regional</strong> em soluções completas de arquitetura e imobiliária para empreendimentos urbanos.
+              A <strong className="text-gray-900 font-semibold">ONDOR</strong> nasceu da união entre experiência, valores familiares e visão estratégica. Com sede própria em <strong className="text-gray-900 font-semibold">Cotia (SP)</strong>, é referência regional em soluções completas de arquitetura e serviços imobiliários voltados para empreendimentos urbanos. Com décadas de atuação no setor, desenvolveu especialidade em projetos de empreendimentos verticais, horizontais e loteamentos.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-8">
-              Fundada por <strong className="text-gray-900 font-semibold">Onofre</strong> e liderada hoje por seus filhos 
-              <strong className="text-gray-900 font-semibold"> Leno e Leide</strong>, unimos <strong className="text-gray-900 font-semibold">técnica, legalidade e viabilidade comercial</strong> com 
-              o que há de mais <strong className="text-gray-900 font-semibold">humano</strong> em cada projeto.
+              Fundada por <strong className="text-gray-900 font-semibold">Onofre e Dorotilde</strong>, e hoje liderada por seus filhos, <strong className="text-gray-900 font-semibold">Leno e Leide</strong>, a empresa une técnica, legalidade e viabilidade comercial ao que há de mais humano em cada projeto.
             </p>
             {/* Icon List */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
@@ -83,8 +79,8 @@ const About = () => {
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-ondor-primary/10 to-ondor-background/10 z-10"></div>
               <img
-                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
-                alt="Arquitetura moderna ONDOR"
+                src="https://i.postimg.cc/bYxW3P9Y/Imagem-do-Whats-App-de-2025-07-07-s-15-47-13-04f23c54.jpg"
+                alt="Equipe Ondor Arquitetura"
                 className="w-full h-96 object-cover transform hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute bottom-6 left-6 z-20">

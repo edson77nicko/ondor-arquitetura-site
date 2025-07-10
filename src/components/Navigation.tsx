@@ -35,7 +35,7 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-6">
           <Link to="/" className="flex items-center">
-            <img src="https://i.postimg.cc/kX3G6gFQ/Logo-Footer.png" alt="Logo Ondor" className="h-14 w-auto mr-2 transition-all duration-300" />
+            <img src="https://i.postimg.cc/kX3G6gFQ/Logo-Footer.png" alt="Logo Ondor" className={`${isScrolled ? 'h-14' : 'h-20'} w-auto mr-2 transition-all duration-300`} />
           </Link>
 
           {/* Desktop Navigation */}

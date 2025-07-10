@@ -5,8 +5,8 @@ const Contato = () => {
   const contactInfo = [
     {
       icon: MapPin,
-      title: "Localização",
-      info: "ONDOR Negócios Imobiliários",
+      title: "ONDOR",
+      info: "",
       detail: "R. Topázio, 458 - Jardim Nomura, Cotia - SP, 06717-235"
     },
     {
@@ -46,7 +46,7 @@ const Contato = () => {
                 Vamos Conversar Sobre o Seu Empreendimento?
               </h1>
               <p className="text-xl text-gray-200 max-w-3xl mx-auto animate-fade-in-up">
-                Estamos prontos para transformar seu terreno em um negócio viável. Agende uma conversa com nosso time técnico e descubra como podemos ajudar.
+                Estamos prontos para transformar sua área em um negócio viável. Agende uma conversa com nosso time técnico e descubra como podemos ajudar.
               </p>
             </div>
           </div>

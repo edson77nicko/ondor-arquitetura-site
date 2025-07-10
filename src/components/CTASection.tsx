@@ -14,7 +14,7 @@ const CTASection = () => {
         <div className="flex justify-end">
           <div className="max-w-2xl bg-white/15 backdrop-blur-sm rounded-2xl p-12 border border-white/30">
             <h2 className="text-4xl font-bold text-white mb-6 leading-tight">
-              Transforme Seu Terreno em um Projeto de <span className="text-ondor-special">Sucesso</span>
+              Transforme sua Área em um Projeto de <span className="text-ondor-special">Sucesso</span>
             </h2>
             <p className="text-xl text-gray-200 mb-8 leading-relaxed">
               Agende uma conversa com nosso time e descubra como podemos estruturar seu empreendimento com segurança e estratégia.

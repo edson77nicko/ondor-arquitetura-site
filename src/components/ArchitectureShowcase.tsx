@@ -45,87 +45,19 @@ const ArchitectureShowcase = () => {
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Projetos em Destaque
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Cada projeto é uma história única de transformação, inovação e excelência arquitetônica
-          </p>
-        </div>
-
-        <div className="relative">
-          {/* Main Image Display */}
-          <div className="relative h-64 sm:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src={projects[activeProject].image}
-              alt={projects[activeProject].title}
-              className="w-full h-full object-cover transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            
-            {/* Project Info Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <div className="flex flex-wrap items-end justify-between">
-                <div className="mb-4 lg:mb-0 w-full sm:w-auto">
-                  <div className="text-sm font-medium text-white/80 mb-2">
-                    {projects[activeProject].category}
-                  </div>
-                  <h3 className="text-3xl font-bold mb-2">
-                    {projects[activeProject].title}
-                  </h3>
-                  <p className="text-lg text-white/90 max-w-2xl">
-                    {projects[activeProject].description}
-                  </p>
-                </div>
-                {/* Hide area/year on mobile */}
-                <div className="hidden sm:flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-6 text-center">
-                  <div>
-                    <div className="text-2xl font-bold">{projects[activeProject].area}</div>
-                    <div className="text-sm text-white/80">Área Total</div>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold">{projects[activeProject].year}</div>
-                    <div className="text-sm text-white/80">Conclusão</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Navigation Arrows - move outside on mobile */}
-            <button
-              onClick={prevProject}
-              className="absolute left-[-28px] sm:left-4 top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-black/50 transition-all duration-300"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextProject}
-              className="absolute right-[-28px] sm:right-4 top-1/2 transform -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 backdrop-blur-sm text-white hover:bg-black/50 transition-all duration-300"
-            >
-              <ChevronRight size={24} />
-            </button>
+        <div className="flex justify-center">
+          <div className="w-full max-w-4xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 mx-auto">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/YYC1gBqkgr0"
+              title="Vídeo Institucional ONDOR"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
           </div>
-
-          {/* Project Thumbnails */}
-          <div className="flex justify-center mt-8 space-x-4">
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                onClick={() => setActiveProject(index)}
-                className={`relative w-20 h-20 rounded-lg overflow-hidden transition-all duration-300 ${
-                  index === activeProject ? 'ring-2 ring-ondor-primary' : 'opacity-60 hover:opacity-80'
-                }`}
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
-
         </div>
       </div>
     </section>

@@ -123,7 +123,7 @@ const NewHeroSection = () => {
         <div className="flex flex-col items-center justify-center w-full">
           {/* Tag superior */}
           <div className="text-white text-xs sm:text-sm font-light tracking-widest mb-2 mt-8 sm:mt-0 uppercase hero-fade-in-up" style={{letterSpacing: '0.15em'}}>
-            Ondor - Arquitetura & Construção
+            Ondor - Arquitetura & Construções
           </div>
           <h1
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug md:leading-tight mb-3 sm:mb-5 tracking-wide text-white/90 hero-fade-in-up-delay"
@@ -183,14 +183,17 @@ const NewHeroSection = () => {
       </div>
 
       {/* Itens de serviços na parte inferior da seção */}
-      <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-12 mb-2 hero-fade-in-up-delay3 z-30">
-        <div className="flex items-center gap-2 justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-          <span className="text-base sm:text-lg font-semibold text-white">Loteamentos</span>
-        </div>
-        <div className="flex items-center gap-2 justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
-          <span className="text-base sm:text-lg font-semibold text-white">Empreendimentos Verticais & Horizontais</span>
+      <div className="w-full flex flex-col items-center mt-12 mb-2 hero-fade-in-up-delay3 z-30">
+        <span className="text-xs sm:text-sm text-white/80 font-light tracking-wide uppercase mb-2">Especialistas em</span>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="flex items-center gap-2 justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            <span className="text-base sm:text-2xl font-semibold text-white">Loteamentos</span>
+          </div>
+          <div className="flex items-center gap-2 justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
+            <span className="text-base sm:text-2xl font-semibold text-white">Empreendimentos Verticais & Horizontais</span>
+          </div>
         </div>
       </div>
     </section>
