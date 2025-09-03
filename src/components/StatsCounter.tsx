@@ -14,7 +14,7 @@ const StatsCounter = () => {
   const stats: Stat[] = [
     { value: "40+", label: "Anos de Experiência", numericValue: 40 },
     { value: "100%", label: "Projetos Aprovados", numericValue: 100 },
-    { value: "500+", label: "Empreendimentos", numericValue: 500 },
+    { value: "1000+", label: "Projetos", numericValue: 1000 },
     { value: "1h", label: "Tempo de Resposta", numericValue: 1 }
   ];
 

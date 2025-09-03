@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Layout from '../components/Layout';
+import SEOHead from '../components/SEOHead';
 import { Users, Award, Clock, MapPin, Shield, Search, Hammer, Target, Eye, HeartHandshake } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
+import LenoImage from '../assets/Leno.jpg';
+import LeideImage from '../assets/Leide.jpg';
 
 // --- Tabs Verticais Institucionais ---
 const valores = [
@@ -35,10 +38,10 @@ const valores = [
     impact: "Clareza total para o cliente, do início ao fim.",
     bullets: [
       "Atendimento honesto e transparente",
-      "Informação clara e acessível no site",
+      "Informação clara e acessível",
       "Compromisso com autenticidade e verdade"
     ],
-    text: "Nosso objetivo é que o cliente compreenda plenamente nossos serviços e expertise, sem precisar 'caçar' informações."
+    text: "Mantemos nossos clientes bem informados, apontando limitações e alternativas para cada projeto."
   },
   {
     tab: "Soluções",
@@ -84,14 +87,14 @@ function ValoresInstitucionaisTabs() {
             <Target className="h-6 w-6 text-ondor-primary" />
             <h4 className="text-xl font-bold text-ondor-primary">Nossa Missão</h4>
           </div>
-          <p className="text-gray-700 text-base leading-relaxed">Oferecer soluções inteligentes, seguras e personalizadas em arquitetura e negócios imobiliários, promovendo a realização de sonhos com responsabilidade, qualidade e respeito.</p>
+          <p className="text-gray-700 text-base leading-relaxed">Implantar empreendimentos de excelência que impulsionem o crescimento urbanístico, unindo técnica, inovação e propósito. Atendemos desde projetos residenciais até grandes complexos arquitetônicos, sempre com foco na qualidade, na viabilidade e na valorização das cidades e das pessoas.</p>
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
             <Eye className="h-6 w-6 text-ondor-primary" />
             <h4 className="text-xl font-bold text-ondor-primary">Nossa Visão</h4>
           </div>
-          <p className="text-gray-700 text-base leading-relaxed">Ser reconhecida como uma empresa de excelência, que une tradição familiar, inovação técnica e confiança em cada entrega.</p>
+          <p className="text-gray-700 text-base leading-relaxed">Ser referência em arquitetura e urbanismo, reconhecida pela confiança, inovação e capacidade de realizar empreendimentos verticais, horizontais e loteamentos, sem perder a proximidade e dedicação no atendimento a cada cliente.</p>
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-2">
@@ -175,6 +178,12 @@ const Sobre = () => {
 
   return (
     <Layout>
+      <SEOHead 
+        title="Sobre Nós | ONDOR Arquitetura & Imobiliária"
+        description="Conheça a história da ONDOR: mais de 40 anos de tradição familiar em arquitetura e urbanismo. Fundada por Onofre e Dorotilde, somos referência em Cotia e região."
+        keywords="sobre ONDOR, história empresa, tradição familiar, arquitetura Cotia, Onofre Dorotilde, 40 anos experiência"
+        url="https://ondor.com.br/sobre"
+      />
       <div>
         {/* Hero Section */}
         <section className="relative min-h-[600px] overflow-hidden">
@@ -210,11 +219,11 @@ const Sobre = () => {
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">
                   Nossa História
                 </h2>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                <p className="text-lg text-gray-700 mb-6 leading-relaxed text-justify">
                   A <strong className="text-gray-900 font-semibold">Ondor Arquitetura e Construções</strong> foi fundada em <strong className="text-ondor-primary font-semibold">1982</strong>, resultado da visão e dedicação de seus idealizadores. Com <strong className="text-ondor-primary font-semibold">sede própria</strong> localizada em <strong className="text-gray-900 font-semibold">Cotia</strong>, município da Grande São Paulo, atuamos com excelência no desenvolvimento de projetos para <strong className="text-ondor-primary font-semibold">empreendimentos residenciais, comerciais e industriais</strong>. Nosso compromisso é oferecer <strong className="text-ondor-primary font-semibold">serviços de alta qualidade</strong>, pautados pelo respeito aos clientes, colaboradores e à sociedade.
                 </p>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Atualmente, a gestão da empresa é liderada por dois dos 4 filhos dos fundadores:<br/>
+                <p className="text-lg text-gray-700 mb-6 leading-relaxed text-justify">
+                  Atualmente, a gestão da empresa é liderada por dois dos quatro filhos dos fundadores:<br/>
                   <span className="block mt-2"><span className="text-ondor-primary font-semibold">• Leide Malara</span>, responsável pela área administrativa e institucional.</span>
                   <span className="block"><span className="text-ondor-primary font-semibold">• Arquiteto Leno</span>, à frente da criação, desenvolvimento técnico e inovação dos projetos.</span>
                   Juntos, unem a <strong className="text-gray-900 font-semibold">tradição</strong> construída ao longo de décadas com a <strong className="text-ondor-primary font-semibold">inovação</strong> e o <strong className="text-ondor-primary font-semibold">dinamismo</strong> exigidos pelo mercado atual.
@@ -222,18 +231,13 @@ const Sobre = () => {
               </div>
               <div className="animate-fade-in-up flex flex-col items-center w-full lg:w-1/2" style={{ animationDelay: '0.2s' }}>
                 <div className="w-full max-w-xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-gray-200 mb-6">
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    src="https://www.youtube.com/embed/YYC1gBqkgr0"
-                    title="Vídeo Institucional ONDOR"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="w-full h-full"
-                  ></iframe>
+                  <img
+                    src="https://i.postimg.cc/bYxW3P9Y/Imagem-do-Whats-App-de-2025-07-07-s-15-47-13-04f23c54.jpg"
+                    alt="Equipe Ondor Arquitetura"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <p className="text-lg text-gray-700 leading-relaxed w-full text-left">
+                <p className="text-lg text-gray-700 leading-relaxed w-full text-justify">
                   Como <strong className="text-gray-900 font-semibold">empresa familiar</strong>, contamos com uma equipe de profissionais habilitados e capacitados, comprometidos em transformar em realidade os sonhos e expectativas de nossos clientes por meio de <strong className="text-ondor-primary font-semibold">soluções arquitetônicas inovadoras e personalizadas</strong>.
                 </p>
               </div>
@@ -272,8 +276,8 @@ const Sobre = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
               <div className="text-center animate-fade-in-up">
-                <div className="w-36 h-36 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden border-4 border-ondor-special shadow-2xl transition-transform duration-300 hover:scale-105">
-                  <img src="https://via.placeholder.com/144" alt="Leno" className="w-full h-full object-cover" />
+                <div className="w-48 h-48 bg-gray-200 rounded-lg mx-auto mb-6 flex items-center justify-center overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
+                  <img src={LenoImage} alt="Leno" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-ondor-special mb-1">Leno Malara</h3>
                 <p className="text-ondor-primary font-semibold mb-3 uppercase tracking-wide">Diretor Técnico</p>
@@ -282,8 +286,8 @@ const Sobre = () => {
                 </p>
               </div>
               <div className="text-center animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <div className="w-36 h-36 bg-gray-200 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden border-4 border-ondor-special shadow-2xl transition-transform duration-300 hover:scale-105">
-                  <img src="https://via.placeholder.com/144" alt="Leide" className="w-full h-full object-cover" />
+                <div className="w-48 h-48 bg-gray-200 rounded-lg mx-auto mb-6 flex items-center justify-center overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-105">
+                  <img src={LeideImage} alt="Leide" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-ondor-special mb-1">Leide</h3>
                 <p className="text-ondor-primary font-semibold mb-3 uppercase tracking-wide">Diretora Administrativa</p>

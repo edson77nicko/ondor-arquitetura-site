@@ -1,27 +1,28 @@
 import { Lightbulb, PenTool, Hammer, Key } from 'lucide-react';
 import AnimatedImage from './AnimatedImage';
+import JornadaImage from '../assets/Jornada.jpg'; // Import the image
 
 const ProcessSection = () => {
   const steps = [
     {
       number: "01",
       title: "Conceituação",
-      description: "Entendemos suas necessidades e criamos o conceito ideal para seu projeto."
+      description: "Transformamos suas necessidades em um conceito claro e exclusivo."
     },
     {
       number: "02",
-      title: "Projeto",
-      description: "Desenvolvemos projetos técnicos detalhados e aprovações junto aos órgãos competentes."
+      title: "Estudo Preliminar",
+      description: "Apresentamos soluções visuais e funcionais para o projeto."
     },
     {
       number: "03",
-      title: "Execução",
-      description: "Acompanhamos toda a execução da obra com qualidade e prazo garantidos."
+      title: "Projeto Arquitetônico",
+      description: "Desenvolvemos o projeto completo com todos os detalhes necessários."
     },
     {
       number: "04",
-      title: "Entrega",
-      description: "Finalizamos com a entrega das chaves e suporte pós-obra completo."
+      title: "Aprovação Legal",
+      description: "Conduzimos todo o processo de aprovação junto aos órgãos competentes."
     }
   ];
 
@@ -30,7 +31,7 @@ const ProcessSection = () => {
       {/* Background Pattern - Keeping it subtle */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23012E6F' fill-opacity='1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23012E6F' fill-opacity='1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
       </div>
 
@@ -68,11 +69,11 @@ const ProcessSection = () => {
 
           {/* Right Column: Image */}
           <div className="lg:pl-12">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-w-4 aspect-h-5">
               <AnimatedImage
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                src={JornadaImage}
                 alt="Processo de Arquitetura"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-full object-cover"
                 delay={200}
               />
               <div className="absolute inset-0 bg-gradient-to-br from-ondor-primary/10 to-ondor-accent/10"></div>

@@ -1,7 +1,10 @@
 import { Star } from 'lucide-react';
 import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import reviewsData from '../data/reviews.json';
 
-const googleReviews = [
+// Dados de fallback caso o arquivo JSON não esteja disponível
+const fallbackReviews = [
   {
     author: "Lucinda Silvestre",
     text: "A Ondor tem profissionais muito capacitados. Realizou projetos muito bons para nossa empresa. Sempre nos deu a assessoria que precisamos."
@@ -24,9 +27,61 @@ const googleReviews = [
   }
 ];
 
-import React from "react";
+// Interface para as avaliações do Google
+interface GoogleReview {
+  id: number;
+  author_name: string;
+  author_url?: string;
+  profile_photo_url?: string;
+  rating: number;
+  relative_time_description: string;
+  text: string;
+  time: number;
+  translated: boolean;
+}
 
-const CARD_COUNT = googleReviews.length;
+// Interface para os dados das reviews
+interface ReviewsData {
+  place_name: string;
+  overall_rating: number;
+  total_ratings: number;
+  reviews: GoogleReview[];
+  last_updated: string;
+  total_reviews: number;
+}
+
+// Função para obter dados das reviews do arquivo local
+const getReviewsData = (): { reviews: GoogleReview[], rating: number, totalReviews: number } => {
+  try {
+    // Usar dados do arquivo JSON importado
+    const data = reviewsData as ReviewsData;
+    
+    return {
+      reviews: data.reviews || [],
+      rating: data.overall_rating || 5.0,
+      totalReviews: data.total_ratings || data.total_reviews || 0
+    };
+  } catch (error) {
+    console.warn('Erro ao carregar dados das reviews do arquivo local. Usando dados de fallback.', error);
+    
+    // Em caso de erro, retornar dados de fallback
+    return {
+      reviews: fallbackReviews.map(review => ({
+        id: Date.now() + Math.random(),
+        author_name: review.author,
+        text: review.text,
+        rating: 5,
+        relative_time_description: 'há alguns meses',
+        time: Date.now(),
+        translated: false
+      })),
+      rating: 5.0,
+      totalReviews: fallbackReviews.length
+    };
+  }
+};
+
+
 
 function mod(n: number, m: number) {
   return ((n % m) + m) % m;
@@ -34,9 +89,36 @@ function mod(n: number, m: number) {
 
 const Testimonials = () => {
   const [active, setActive] = React.useState(0);
+  const [reviewCount, setReviewCount] = React.useState(87); // valor padrão
+  const [googlePlaceReviews, setGooglePlaceReviews] = React.useState<GoogleReview[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  const next = () => setActive((prev) => mod(prev + 1, CARD_COUNT));
-  const prev = () => setActive((prev) => mod(prev - 1, CARD_COUNT));
+  React.useEffect(() => {
+    const loadReviewsData = () => {
+      try {
+        setIsLoading(true);
+        const placeData = getReviewsData();
+        setReviewCount(placeData.totalReviews);
+        setGooglePlaceReviews(placeData.reviews);
+      } catch (error) {
+        console.error('Erro ao carregar dados das reviews:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadReviewsData();
+  }, []);
+
+  // Usar avaliações do Google Places se disponíveis, senão usar as estáticas
+  const activeReviews = googlePlaceReviews.length > 0 ? googlePlaceReviews.map(review => ({
+    author: review.author_name,
+    text: review.text
+  })) : fallbackReviews;
+  const totalTestimonials = activeReviews.length;
+
+  const next = () => setActive((prev) => mod(prev + 1, totalTestimonials));
+  const prev = () => setActive((prev) => mod(prev - 1, totalTestimonials));
 
   // Sempre mostra 3 cards: central, anterior e próximo (mesmo se houver menos de 5 depoimentos)
   const getPosition = (index: number) => {
@@ -65,7 +147,7 @@ const Testimonials = () => {
             ))}
             <span className="text-2xl font-bold text-gray-900 ml-2">5,0</span>
           </div>
-          <div className="text-gray-700 text-lg font-medium">79 avaliações no Google</div>
+          <div className="text-gray-700 text-lg font-medium">{reviewCount} avaliações no Google</div>
         </div>
         {/* MOBILE: apenas 1 card centralizado */}
         <div className="relative flex items-center justify-center min-h-[340px] w-full md:hidden">
@@ -89,8 +171,8 @@ const Testimonials = () => {
                 <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
               ))}
             </div>
-            <p className="text-gray-800 text-base mb-6 flex-1">{googleReviews[active].text}</p>
-            <div className="font-semibold text-ondor-primary text-lg mt-2">{googleReviews[active].author}</div>
+            <p className="text-gray-800 text-base mb-6 flex-1">{activeReviews[active].text}</p>
+            <div className="font-semibold text-ondor-primary text-lg mt-2">{activeReviews[active].author}</div>
           </motion.div>
           <button
             onClick={next}
@@ -109,16 +191,16 @@ const Testimonials = () => {
             <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </button>
           <div className="flex justify-center items-center gap-0 md:gap-8 relative h-[320px] w-full">
-            {[...Array(Math.min(3, CARD_COUNT))].map((_, i) => {
+            {[...Array(Math.min(3, totalTestimonials))].map((_, i) => {
               let idx;
-              if (CARD_COUNT === 1) {
+              if (totalTestimonials === 1) {
                 idx = 0;
-              } else if (CARD_COUNT === 2) {
+              } else if (totalTestimonials === 2) {
                 idx = (active + i) % 2;
               } else {
-                idx = mod(active - 1 + i, CARD_COUNT);
+                idx = mod(active - 1 + i, totalTestimonials);
               }
-              const pos = CARD_COUNT === 2 ? (i === 0 ? -0.5 : 0.5) : i - 1;
+              const pos = totalTestimonials === 2 ? (i === 0 ? -0.5 : 0.5) : i - 1;
               const isCenter = pos === 0;
               return (
                 <motion.div
@@ -141,8 +223,8 @@ const Testimonials = () => {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-gray-800 text-base mb-6 flex-1">{googleReviews[idx].text}</p>
-                  <div className="font-semibold text-ondor-primary text-lg mt-2">{googleReviews[idx].author}</div>
+                  <p className="text-gray-800 text-base mb-6 flex-1">{activeReviews[idx].text}</p>
+                  <div className="font-semibold text-ondor-primary text-lg mt-2">{activeReviews[idx].author}</div>
                 </motion.div>
               );
             })}
@@ -157,7 +239,7 @@ const Testimonials = () => {
         </div>
         {/* Dots */}
         <div className="flex justify-center gap-2 mt-8">
-          {googleReviews.map((_, idx) => (
+          {activeReviews.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setActive(idx)}

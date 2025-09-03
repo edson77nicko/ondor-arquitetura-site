@@ -1,6 +1,9 @@
 import Layout from '../components/Layout';
+import SEOHead from '../components/SEOHead';
 import { Building, FileCheck, Hammer, Home, CheckCircle, MapPin, ArrowRight, Star, Award, Shield, Users, TrendingUp } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import DiferenciaisImage from '../assets/diferenciais.jpg';
+import LogoImoveis from '../assets/logo-imoveis.png';
 
 const Servicos = () => {
   // Original detailed services data
@@ -12,8 +15,8 @@ const Servicos = () => {
       features: [
         "Projetos arquitetônicos completos",
         "Plantas baixas e cortes técnicos",
-        "Projetos de interiores",
-        "Modelagem 3D e renderização"
+        "Modelagem 3D e renderização",
+        "Estudos de viabilidade"
       ],
       gradient: "from-blue-500 to-cyan-500" // Added for styling consistency
     },
@@ -23,6 +26,7 @@ const Servicos = () => {
       description: "Cuidamos de toda a burocracia: licenças, Habite-se, registros e CNDs.",
       features: [
         "Aprovação na Prefeitura",
+        "GRAPROHAB",
         "Licenças ambientais",
         "Habite-se e CNDs",
         "Registros cartoriais"
@@ -58,11 +62,6 @@ const Servicos = () => {
   // Featured services to match the three highlighted in the home hero
   const featuredServices = [
     {
-      icon: MapPin,
-      title: "Loteamentos",
-      description: "Do planejamento à legalização completa, garantindo a viabilidade de seu empreendimento."
-    },
-    {
       icon: Building,
       title: "Empreendimentos Verticais",
       description: "Soluções arquitetônicas inteligentes e eficientes, da concepção à entrega."
@@ -71,6 +70,11 @@ const Servicos = () => {
       icon: Home,
       title: "Empreendimentos Horizontais",
       description: "Projetos personalizados com foco em qualidade e otimização para o seu investimento."
+    },
+    {
+      icon: MapPin,
+      title: "Loteamentos",
+      description: "Do planejamento à legalização completa, garantindo a viabilidade de seu empreendimento."
     }
   ];
 
@@ -84,7 +88,7 @@ const Servicos = () => {
     {
       icon: Shield,
       title: "Domínio Legal",
-      description: "Forte conhecimento regulatório garante aprovações ágeis em todos os órgãos competentes."
+      description: "Com ampla experiência em legislação e normas urbanísticas, conduzimos o processo de aprovação com segurança e transparência."
     },
     {
       icon: Star,
@@ -106,6 +110,12 @@ const Servicos = () => {
 
   return (
     <Layout>
+      <SEOHead 
+        title="Serviços | ONDOR Arquitetura & Imobiliária"
+        description="Conheça nossos serviços especializados: Arquitetura, Legalização, Execução de Obras e Imobiliária Integrada. Mais de 40 anos de experiência em Cotia e região."
+        keywords="serviços arquitetura, legalização obras, execução técnica, imobiliária, loteamentos, empreendimentos, Cotia, ONDOR"
+        url="https://ondor.com.br/servicos"
+      />
       {/* Hero Section - Summarized and aligned with Home page aesthetic */}
       <section className="relative min-h-[600px] overflow-hidden">
         {/* Background Image */}
@@ -204,6 +214,19 @@ const Servicos = () => {
                       {service.description}
                     </p>
 
+                    {/* Logo for Imobiliária Integrada */}
+                    {index === 3 && (
+                      <div className="flex justify-center mb-6">
+                        <a href="https://www.ondorimoveis.com.br" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-105">
+                          <img 
+                             src={LogoImoveis} 
+                             alt="ONDOR Imóveis" 
+                             className="h-16 w-auto object-contain"
+                           />
+                        </a>
+                      </div>
+                    )}
+
                     {/* Features */}
                     <div className="space-y-2 mb-6">
                       {service.features.map((feature, featureIndex) => (
@@ -277,23 +300,16 @@ const Servicos = () => {
 
             {/* Right Column - Visual Element */}
             <div className="animate-fade-in-up relative" style={{ animationDelay: '0.2s' }}>
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[5/4]">
                 <div className="absolute inset-0 bg-gradient-to-br from-ondor-primary/10 to-ondor-background/10 z-10"></div>
                 <img
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                  src={DiferenciaisImage}
                   alt="Projetos ONDOR - Arquitetura e Imobiliária"
-                  className="w-full h-96 object-cover transform hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute bottom-6 left-6 z-20">
-                  <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg">
-                    <div className="text-ondor-primary font-bold text-lg">40+ Anos</div>
-                    <div className="text-gray-600 text-sm">de Experiência Comprovada</div>
-                  </div>
-                </div>
               </div>
 
               {/* Elementos decorativos */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-ondor-accent to-ondor-primary rounded-full opacity-10"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-ondor-primary to-ondor-accent rounded-full opacity-5"></div>
             </div>
           </div>

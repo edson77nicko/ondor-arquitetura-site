@@ -29,7 +29,7 @@ const Hero = () => {
               to="/servicos"
               className="border-2 border-white text-white px-8 py-2 rounded-lg font-semibold text-lg hover:bg-white hover:text-ondor-primary transition-all duration-300 text-center"
             >
-              Conheça Nossos Projetos
+              Nossos Serviços
             </Link>
           </div>
         </div>

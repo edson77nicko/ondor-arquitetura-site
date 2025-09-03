@@ -30,16 +30,16 @@ const heroImages = [
 ];
 
 const clientLogos = [
-  'https://i.postimg.cc/8P5kmDpt/Frame-10.png',
-  'https://i.postimg.cc/dtxsWXDv/Frame-11.png',
-  'https://i.postimg.cc/mk6s5zLV/Frame-2.png',
-  'https://i.postimg.cc/ryhMmb1W/Frame-3.png',
-  'https://i.postimg.cc/zvfN7SrV/Frame-4.png',
-  'https://i.postimg.cc/vBhM52CJ/Frame-5.png',
-  'https://i.postimg.cc/nLvnhh2c/Frame-6.png',
-  'https://i.postimg.cc/Qthh9ZYg/Frame-7.png',
-  'https://i.postimg.cc/GmTc6QsD/Frame-8.png',
-  'https://i.postimg.cc/s2FVzhpN/Frame-9.png',
+  { src: 'https://i.postimg.cc/8P5kmDpt/Frame-10.png', alt: 'Logo cliente parceiro ONDOR' },
+  { src: 'https://i.postimg.cc/dtxsWXDv/Frame-11.png', alt: 'Logo empresa cliente ONDOR' },
+  { src: 'https://i.postimg.cc/mk6s5zLV/Frame-2.png', alt: 'Logo parceiro comercial ONDOR' },
+  { src: 'https://i.postimg.cc/ryhMmb1W/Frame-3.png', alt: 'Logo cliente empreendimento ONDOR' },
+  { src: 'https://i.postimg.cc/zvfN7SrV/Frame-4.png', alt: 'Logo empresa parceira ONDOR' },
+  { src: 'https://i.postimg.cc/vBhM52CJ/Frame-5.png', alt: 'Logo cliente arquitetura ONDOR' },
+  { src: 'https://i.postimg.cc/nLvnhh2c/Frame-6.png', alt: 'Logo parceiro imobiliário ONDOR' },
+  { src: 'https://i.postimg.cc/Qthh9ZYg/Frame-7.png', alt: 'Logo cliente loteamento ONDOR' },
+  { src: 'https://i.postimg.cc/GmTc6QsD/Frame-8.png', alt: 'Logo empresa cliente ONDOR' },
+  { src: 'https://i.postimg.cc/s2FVzhpN/Frame-9.png', alt: 'Logo parceiro estratégico ONDOR' },
 ];
 
 const NewHeroSection = () => {
@@ -141,7 +141,7 @@ const NewHeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-5 w-full max-w-[600px] mb-2 sm:mb-0 justify-center hero-fade-in-up-delay3">
             <a
-              href="https://wa.me/"
+              href="https://wa.me/5511947095205?text=Olá! Gostaria de iniciar meu projeto com a ONDOR. Podem me ajudar?"
               target="_blank"
               rel="noreferrer"
               className="border-2 border-white px-8 py-2 rounded-xl font-bold text-lg transition-all duration-300 text-center w-full sm:w-auto uppercase"
@@ -168,7 +168,7 @@ const NewHeroSection = () => {
               </span>
             </a>
             <Link
-              to="#"
+              to="/servicos"
               className="border-2 border-white text-white px-8 py-2 rounded-xl font-bold text-lg transition-all duration-300 text-center w-full sm:w-auto uppercase hover:bg-white/10"
               style={{
                 background: 'transparent',
@@ -184,17 +184,9 @@ const NewHeroSection = () => {
 
       {/* Itens de serviços na parte inferior da seção */}
       <div className="w-full flex flex-col items-center mt-12 mb-2 hero-fade-in-up-delay3 z-30">
-        <span className="text-xs sm:text-sm text-white/80 font-light tracking-wide uppercase mb-2">Especialistas em</span>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <div className="flex items-center gap-2 justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2h5m6-16v4m0 0V4m0 4a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-            <span className="text-base sm:text-2xl font-semibold text-white">Loteamentos</span>
-          </div>
-          <div className="flex items-center gap-2 justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M3 6h18M3 14h18M3 18h18" /></svg>
-            <span className="text-base sm:text-2xl font-semibold text-white">Empreendimentos Verticais & Horizontais</span>
-          </div>
-        </div>
+        <p className="text-base sm:text-lg text-white/90 font-light max-w-3xl mx-auto text-center">
+          Especialistas em <strong className="font-semibold">EMPREENDIMENTOS VERTICAIS, HORIZONTAIS</strong> e <strong className="font-semibold">LOTEAMENTOS.</strong>
+        </p>
       </div>
     </section>
   );
@@ -218,11 +210,11 @@ function AutoPlayLogoCarousel() {
   return (
     <div ref={emblaRef} className="overflow-hidden w-full">
       <div className="flex">
-        {clientLogos.map((src, idx) => (
-          <div key={src} className="flex items-center justify-center px-6 basis-1/2 sm:basis-1/3 md:basis-1/5 transition-opacity duration-500">
-            <img src={src} alt={`Logo cliente ${idx + 1}`} className="h-16 object-contain" style={{maxWidth: '180px'}} />
-          </div>
-        ))}
+        {clientLogos.map((logo, idx) => (
+              <div key={logo.src} className="flex items-center justify-center px-6 basis-1/2 sm:basis-1/3 md:basis-1/5 transition-opacity duration-500">
+                <img src={logo.src} alt={logo.alt} className="h-16 object-contain" style={{maxWidth: '180px'}} />
+              </div>
+            ))}
       </div>
     </div>
   );

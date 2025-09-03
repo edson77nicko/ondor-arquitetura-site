@@ -1,0 +1,64 @@
+{
+  "place_name": "Ondor Arquitetura e Soluções",
+  "overall_rating": 4.9,
+  "total_ratings": 82,
+  "reviews": [
+    {
+      "id": 1704067200,
+      "author_name": "Maria Silva",
+      "author_url": "",
+      "profile_photo_url": "",
+      "rating": 5,
+      "relative_time_description": "há 2 semanas",
+      "text": "Excelente trabalho! A equipe da Ondor superou todas as minhas expectativas. O projeto ficou incrível e dentro do prazo estabelecido.",
+      "time": 1704067200,
+      "translated": false
+    },
+    {
+      "id": 1703980800,
+      "author_name": "João Santos",
+      "author_url": "",
+      "profile_photo_url": "",
+      "rating": 5,
+      "relative_time_description": "há 3 semanas",
+      "text": "Profissionais muito competentes e atenciosos. Recomendo sem hesitar!",
+      "time": 1703980800,
+      "translated": false
+    },
+    {
+      "id": 1703894400,
+      "author_name": "Ana Costa",
+      "author_url": "",
+      "profile_photo_url": "",
+      "rating": 5,
+      "relative_time_description": "há 1 mês",
+      "text": "Trabalho impecável! A Ondor transformou nossa casa dos sonhos em realidade. Muito obrigada!",
+      "time": 1703894400,
+      "translated": false
+    },
+    {
+      "id": 1703808000,
+      "author_name": "Carlos Oliveira",
+      "author_url": "",
+      "profile_photo_url": "",
+      "rating": 4,
+      "relative_time_description": "há 1 mês",
+      "text": "Ótimo atendimento e qualidade no projeto. Ficamos muito satisfeitos com o resultado final.",
+      "time": 1703808000,
+      "translated": false
+    },
+    {
+      "id": 1703721600,
+      "author_name": "Fernanda Lima",
+      "author_url": "",
+      "profile_photo_url": "",
+      "rating": 5,
+      "relative_time_description": "há 1 mês",
+      "text": "Equipe muito profissional e criativa. O projeto superou nossas expectativas!",
+      "time": 1703721600,
+      "translated": false
+    }
+  ],
+  "last_updated": "2024-01-15T10:30:00.000Z",
+  "total_reviews": 5
+}

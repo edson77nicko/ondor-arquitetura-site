@@ -57,7 +57,6 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Endereço</h3>
             <div className="space-y-2 text-gray-300 text-sm">
               <p className="font-semibold text-white">Ondor Arquitetura e Construções</p>
-              <p>Localizado em: ONDOR Negócios Imobiliários</p>
               <p>R. Topázio, 458 - Jardim Nomura, Cotia - SP, 06717-235</p>
             </div>
           </div>
@@ -67,6 +66,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
             <div className="space-y-2 text-gray-300 text-sm">
               <p>Telefone: <a href="tel:+551147032874" className="hover:underline">(11) 4703-2874</a></p>
+              <p>Celular: <a href="https://wa.me/5511947095205?text=Olá! Gostaria de iniciar meu projeto com a ONDOR. Podem me ajudar?" target="_blank" rel="noopener noreferrer" className="hover:underline">(11) 94709-5205</a></p>
+              <p>E-mail: <a href="mailto:comercial@ondor.com.br" className="hover:underline">comercial@ondor.com.br</a></p>
               <div className="mt-2">
                 <span className="block font-semibold text-white mb-1">Horário de funcionamento:</span>
                 <ul className="ml-2">

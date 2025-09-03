@@ -1,4 +1,6 @@
 import Layout from '../components/Layout';
+import SEOHead from '../components/SEOHead';
+import StructuredData from '../components/StructuredData';
 import NewHeroSection from '../components/NewHeroSection';
 import LogoCarousel from '../components/LogoCarousel';
 import StatsCounter from '../components/StatsCounter';
@@ -12,11 +14,18 @@ import ProcessSection from '../components/ProcessSection';
 const Index = () => {
   return (
     <Layout>
+      <SEOHead 
+        title="ONDOR - Arquitetura & Imobiliária | Soluções Integradas para Empreendimentos"
+        description="ONDOR - Mais de 40 anos transformando terrenos em negócios viáveis. Arquitetura, legalização e imobiliária integrada em Cotia e região."
+        keywords="arquitetura, imobiliária, loteamentos, empreendimentos, Cotia, construção, projetos, ONDOR"
+        url="https://ondor.com.br"
+      />
+      <StructuredData type="organization" data={{}} />
       <NewHeroSection />
       <LogoCarousel />
-      <About />
-      <StatsCounter />
       <ArchitectureShowcase />
+      <StatsCounter />
+      <About />
       <Services />
       <ProcessSection />
       <Testimonials />

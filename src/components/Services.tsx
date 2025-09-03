@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Building, FileCheck, Hammer, Home, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -106,10 +107,21 @@ const Services = () => {
                   </p>
 
                   {/* Action */}
-                  <a href="/servicos" className="flex items-center text-sm font-medium text-ondor-primary dark:text-white transition-all duration-500 group-hover:underline">
-                    <span>Saiba mais</span>
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </a>
+                  {index === 3 ? (
+                    <a href="https://www.ondorimoveis.com.br" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       className="flex items-center text-sm font-medium text-ondor-primary dark:text-white transition-all duration-500 group-hover:underline">
+                      <span>Visite o site</span>
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </a>
+                  ) : (
+                    <Link to="/servicos" 
+                          className="flex items-center text-sm font-medium text-ondor-primary dark:text-white transition-all duration-500 group-hover:underline">
+                      <span>Saiba mais</span>
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </Link>
+                  )}
                 </div>
               </div>
             );
@@ -119,12 +131,12 @@ const Services = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
           <div className="inline-flex flex-col sm:flex-row gap-4">
-            <a href="/servicos" className="bg-gradient-to-r from-ondor-primary to-ondor-accent text-white px-8 py-2 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-102">
+            <Link to="/servicos" className="bg-gradient-to-r from-ondor-primary to-ondor-accent text-white px-8 py-2 rounded-xl font-semibold text-lg hover:shadow-xl transition-all duration-300 transform hover:scale-102">
               Ver Todos os Serviços
-            </a>
-            <a href="/contato" className="border-2 border-ondor-primary text-ondor-primary px-8 py-2 rounded-xl font-semibold text-lg hover:bg-ondor-primary/90 hover:border-ondor-primary/90 hover:text-white transition-all duration-300">
+            </Link>
+            <Link to="/contato" className="border-2 border-ondor-primary text-ondor-primary px-8 py-2 rounded-xl font-semibold text-lg hover:bg-ondor-primary/90 hover:border-ondor-primary/90 hover:text-white transition-all duration-300">
               Solicitar Orçamento
-            </a>
+            </Link>
           </div>
         </div>
       </div>

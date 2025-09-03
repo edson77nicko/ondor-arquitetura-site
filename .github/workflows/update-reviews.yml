@@ -1,0 +1,58 @@
+name: Update Google Reviews
+
+on:
+  schedule:
+    # Executa todo dia às 6:00 UTC (3:00 AM no horário de Brasília)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Permite execução manual
+
+jobs:
+  update-reviews:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: |
+          cd scripts
+          npm init -y
+          npm install
+          
+      - name: Update reviews
+        env:
+          GOOGLE_PLACES_API_KEY: ${{ secrets.GOOGLE_PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+        run: |
+          node scripts/update-reviews.js
+          
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+          
+      - name: Commit and push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add src/data/reviews.json
+          git commit -m "🤖 Auto-update Google Reviews - $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
+          
+      - name: No changes detected
+        if: steps.verify-changed-files.outputs.changed == 'false'
+        run: |
+          echo "✅ Nenhuma alteração detectada nas reviews"

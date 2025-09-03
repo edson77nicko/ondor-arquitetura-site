@@ -3,16 +3,16 @@ import AutoScroll from 'embla-carousel-auto-scroll';
 import React from 'react';
 
 const clientLogos = [
-  'https://i.postimg.cc/8P5kmDpt/Frame-10.png',
-  'https://i.postimg.cc/dtxsWXDv/Frame-11.png',
-  'https://i.postimg.cc/mk6s5zLV/Frame-2.png',
-  'https://i.postimg.cc/ryhMmb1W/Frame-3.png',
-  'https://i.postimg.cc/zvfN7SrV/Frame-4.png',
-  'https://i.postimg.cc/vBhM52CJ/Frame-5.png',
-  'https://i.postimg.cc/nLvnhh2c/Frame-6.png',
-  'https://i.postimg.cc/Qthh9ZYg/Frame-7.png',
-  'https://i.postimg.cc/GmTc6QsD/Frame-8.png',
-  'https://i.postimg.cc/s2FVzhpN/Frame-9.png',
+  { src: 'https://i.postimg.cc/8P5kmDpt/Frame-10.png', alt: 'Logo cliente parceiro ONDOR' },
+  { src: 'https://i.postimg.cc/dtxsWXDv/Frame-11.png', alt: 'Logo empresa cliente ONDOR' },
+  { src: 'https://i.postimg.cc/mk6s5zLV/Frame-2.png', alt: 'Logo parceiro comercial ONDOR' },
+  { src: 'https://i.postimg.cc/ryhMmb1W/Frame-3.png', alt: 'Logo cliente empreendimento ONDOR' },
+  { src: 'https://i.postimg.cc/zvfN7SrV/Frame-4.png', alt: 'Logo empresa parceira ONDOR' },
+  { src: 'https://i.postimg.cc/vBhM52CJ/Frame-5.png', alt: 'Logo cliente arquitetura ONDOR' },
+  { src: 'https://i.postimg.cc/nLvnhh2c/Frame-6.png', alt: 'Logo parceiro imobiliário ONDOR' },
+  { src: 'https://i.postimg.cc/Qthh9ZYg/Frame-7.png', alt: 'Logo cliente loteamento ONDOR' },
+  { src: 'https://i.postimg.cc/GmTc6QsD/Frame-8.png', alt: 'Logo empresa cliente ONDOR' },
+  { src: 'https://i.postimg.cc/s2FVzhpN/Frame-9.png', alt: 'Logo parceiro estratégico ONDOR' },
 ];
 
 const LogoCarousel = () => {
@@ -39,9 +39,9 @@ const LogoCarousel = () => {
       <div className="relative w-full max-w-6xl mx-auto">
         <div ref={emblaRef} className="overflow-hidden w-full">
           <div className="flex">
-            {clientLogos.map((src, idx) => (
-              <div key={src} className="flex items-center justify-center px-6 basis-1/2 sm:basis-1/3 md:basis-1/5 transition-opacity duration-500">
-                <img src={src} alt={`Logo cliente ${idx + 1}`} className="h-16 object-contain" style={{maxWidth: '180px'}} />
+            {clientLogos.map((logo, idx) => (
+              <div key={logo.src} className="flex items-center justify-center px-6 basis-1/2 sm:basis-1/3 md:basis-1/5 transition-opacity duration-500">
+                <img src={logo.src} alt={logo.alt} className="h-16 object-contain" style={{maxWidth: '180px'}} />
               </div>
             ))}
           </div>
@@ -51,4 +51,4 @@ const LogoCarousel = () => {
   );
 };
 
-export default LogoCarousel; 
+export default LogoCarousel;

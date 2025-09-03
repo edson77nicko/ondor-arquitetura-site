@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Award, Users, MapPin, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,10 +40,10 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Sobre a ONDOR</h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <p className="text-lg text-gray-700 leading-relaxed text-justify mb-6">
               A <strong className="text-gray-900 font-semibold">ONDOR</strong> nasceu da união entre experiência, valores familiares e visão estratégica. Com sede própria em <strong className="text-gray-900 font-semibold">Cotia (SP)</strong>, é referência regional em soluções completas de arquitetura e serviços imobiliários voltados para empreendimentos urbanos. Com décadas de atuação no setor, desenvolveu especialidade em projetos de empreendimentos verticais, horizontais e loteamentos.
             </p>
-            <p className="text-lg text-gray-700 leading-relaxed mb-8">
+            <p className="text-lg text-gray-700 leading-relaxed text-justify mb-8">
               Fundada por <strong className="text-gray-900 font-semibold">Onofre e Dorotilde</strong>, e hoje liderada por seus filhos, <strong className="text-gray-900 font-semibold">Leno e Leide</strong>, a empresa une técnica, legalidade e viabilidade comercial ao que há de mais humano em cada projeto.
             </p>
             {/* Icon List */}
@@ -72,7 +73,7 @@ const About = () => {
                 </div>
               ))}
             </div>
-            <a href="/sobre" className="inline-block border-2 border-ondor-primary text-ondor-primary px-8 py-3 rounded-xl font-semibold text-lg hover:bg-ondor-primary hover:text-white transition-all duration-300 text-center">Saiba mais sobre a ONDOR</a>
+            <Link to="/sobre" className="inline-block border-2 border-ondor-primary text-ondor-primary px-8 py-3 rounded-xl font-semibold text-lg hover:bg-ondor-primary hover:text-white transition-all duration-300 text-center">Saiba mais sobre a ONDOR</Link>
           </div>
           
           <div className="animate-fade-in-up relative" style={{ animationDelay: '0.2s' }}>
@@ -83,17 +84,7 @@ const About = () => {
                 alt="Equipe Ondor Arquitetura"
                 className="w-full h-96 object-cover transform hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute bottom-6 left-6 z-20">
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 shadow-lg">
-                  <div className="text-ondor-primary font-bold text-lg">ONDOR</div>
-                  <div className="text-gray-600 text-sm">Arquitetura & Imobiliária</div>
-                </div>
-              </div>
             </div>
-            
-            {/* Elemento decorativo */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-ondor-accent to-ondor-primary rounded-full opacity-10"></div>
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-ondor-primary to-ondor-background rounded-full opacity-10"></div>
           </div>
         </div>
       </div>
