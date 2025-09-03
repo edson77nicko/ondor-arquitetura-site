@@ -3,7 +3,7 @@ const path = require('path');
 const https = require('https');
 
 // Configurações
-const PLACE_ID = process.env.GOOGLE_PLACE_ID || 'ChIJN1t_tDeuEmsRUsoyG83frY4'; // Place ID padrão (exemplo)
+const PLACE_ID = process.env.GOOGLE_PLACE_ID || 'ChIJxbYvDFgHz5QRfN5SBJ7oyhY'; // Place ID da Ondor Arquitetura
 const API_KEY = process.env.GOOGLE_PLACES_API_KEY;
 const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'reviews.json');
 
